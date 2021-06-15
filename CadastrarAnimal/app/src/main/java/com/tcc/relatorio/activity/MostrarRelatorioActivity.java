@@ -75,7 +75,8 @@ public class MostrarRelatorioActivity extends AppCompatActivity {
 
         // TODO: 1 - Calcular o requerimento de água do rebanho de cada invernada
         ArrayList<Float> listaRequerimento = new ArrayList<Float>();
-        Float requerimento = (float) 0;
+        Float requerimentoTotal = (float) 0;
+        Integer numeroAnimaisTotal = 0;
         for (Invernada invernada : fazenda.invernada) {
 
             Float uaTotal = (float) 0;
@@ -83,6 +84,8 @@ public class MostrarRelatorioActivity extends AppCompatActivity {
             for (Animal animal : invernada.animais) {
                 int index = 0;
                 ArrayList<Float> ua = new ArrayList<Float>();
+
+                numeroAnimaisTotal = numeroAnimaisTotal + animal.getQuantidade();
 
                 for ( String item: tiposRebanho ) {
                     if (animal.tipo.equals(item)) {
@@ -102,7 +105,7 @@ public class MostrarRelatorioActivity extends AppCompatActivity {
             }
 
             //calculo
-            requerimento = (40 * uaTotal) / 1000;
+            requerimentoTotal = requerimentoTotal + (40 * uaTotal) / 1000;
 
         }
 
@@ -131,13 +134,19 @@ public class MostrarRelatorioActivity extends AppCompatActivity {
             }
         }
 
-        dispay.setText("" + String.valueOf(volumeTotal));
 
+        //Dividir o volume total (disponibilidade de água) pelo número de animais e verificar se atende ou não o requerimento diário do rebanho
 
+        float disponibilidade = volumeTotal / numeroAnimaisTotal;
+        if (disponibilidade > 50){
+            dispay.setText("Ideal");
+        } else if (disponibilidade >= 30 && disponibilidade <= 50) {
+            dispay.setText("Moderado");
+        }
+        else if (disponibilidade < 30) {
+            dispay.setText("Ruim");
+        }
 
-        // TODO: 3 - Calcular o volume (V) da água disponível para:
-            // TODO: 3.1 - Bebedouro circular
-            // TODO: 3.2 - Bebedouro retangular
 
         // my_child_toolbar is defined in the layout file
         Toolbar myChildToolbar = (Toolbar) findViewById(R.id.toolbar);
