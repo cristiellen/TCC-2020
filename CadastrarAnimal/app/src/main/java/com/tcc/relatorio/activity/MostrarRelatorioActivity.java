@@ -109,6 +109,7 @@ public class MostrarRelatorioActivity extends AppCompatActivity {
 
         // TODO: 2 - Calcular o número de bebedouros (artifical / natural) de cada invernada
         float volumeTotal = 0;
+        float contornoTotal = 0;
         for (Invernada invernada : fazenda.invernada) {
             for (BebedouroCircular bebedouro : invernada.bebedourosCir){
                 float volume = 0.0F;
@@ -118,6 +119,7 @@ public class MostrarRelatorioActivity extends AppCompatActivity {
                 volume = (float) (pi * Math.pow(raio, 2) * h); //
 
                 volumeTotal = volumeTotal + volume;
+
             }
             for (BebedouroRetangular bebedouro : invernada.bebedourosRet){
                 float volume = 0.0F;
@@ -133,9 +135,19 @@ public class MostrarRelatorioActivity extends AppCompatActivity {
 
 
         //Dividir o volume total (disponibilidade de água) pelo número de animais e verificar se atende ou não o requerimento diário do rebanho
-        final TextView dispay= (TextView) findViewById(R.id.txtDisplayAguaPorAnimal);
-
+        TextView dispay= (TextView) findViewById(R.id.txtDisplayAguaPorAnimal);
         float disponibilidade = volumeTotal / numeroAnimaisTotal;
+        if (disponibilidade > 50){
+            dispay.setText("Ideal");
+        } else if (disponibilidade >= 30 && disponibilidade <= 50) {
+            dispay.setText("Moderado");
+        }
+        else if (disponibilidade < 30) {
+            dispay.setText("Ruim");
+        }
+
+        dispay= (TextView) findViewById(R.id.txtDisplayAguaPorAnimal);
+        float metroLinear = volumeTotal / numeroAnimaisTotal;
         if (disponibilidade > 50){
             dispay.setText("Ideal");
         } else if (disponibilidade >= 30 && disponibilidade <= 50) {

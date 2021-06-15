@@ -16,6 +16,7 @@
 
         <TextView
                 android:id="@+id/txtAguaPorAnimal"
+                style="@style/CustomText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="10dp"
@@ -31,6 +32,33 @@
                 android:padding="10dp"
                 android:gravity="center"
                 app:layout_constraintTop_toBottomOf="@id/txtAguaPorAnimal"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                android:text="" />
+
+
+
+
+
+
+        <TextView
+                android:id="@+id/txtMetroLinearAnimalBebedouro"
+                style="@style/CustomText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:gravity="center"
+                app:layout_constraintTop_toBottomOf="@id/toolbar"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                android:text="Metro linear por animal no bebedouro" />
+        <TextView
+                android:id="@+id/txtDisplayMetroLinearAnimalBebedouro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:gravity="center"
+                app:layout_constraintTop_toBottomOf="@id/txtMetroLinearAnimalBebedouro"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 android:text="" />
