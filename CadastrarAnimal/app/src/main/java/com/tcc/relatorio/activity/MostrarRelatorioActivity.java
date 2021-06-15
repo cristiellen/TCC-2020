@@ -68,8 +68,6 @@ public class MostrarRelatorioActivity extends AppCompatActivity {
 
         String[] tiposRebanho = new String[]{"Vacas de cria", "Touro", "Novilha de 2 a 3 anos", "Novilhas de 1 a 2 anos", "Bezerras", "Garrote de 2 a 3 anos", "Garrote de 1 a 2 anos", "Bezerros"};
 
-        final TextView dispay= (TextView) findViewById(R.id.txtDisplay);
-
         long fazendaId = Fazenda.getId_temp();
         Fazenda fazenda = boxStore.boxFor(Fazenda.class).get(fazendaId);
 
@@ -122,7 +120,6 @@ public class MostrarRelatorioActivity extends AppCompatActivity {
                 volumeTotal = volumeTotal + volume;
             }
             for (BebedouroRetangular bebedouro : invernada.bebedourosRet){
-                dispay.setText("" + bebedouro.toString());
                 float volume = 0.0F;
                 Double pi = 3.14;
                 float largura = Float.parseFloat(bebedouro.largura);
@@ -136,6 +133,7 @@ public class MostrarRelatorioActivity extends AppCompatActivity {
 
 
         //Dividir o volume total (disponibilidade de água) pelo número de animais e verificar se atende ou não o requerimento diário do rebanho
+        final TextView dispay= (TextView) findViewById(R.id.txtDisplayAguaPorAnimal);
 
         float disponibilidade = volumeTotal / numeroAnimaisTotal;
         if (disponibilidade > 50){
