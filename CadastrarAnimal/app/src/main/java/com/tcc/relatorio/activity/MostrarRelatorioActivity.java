@@ -109,10 +109,25 @@ public class MostrarRelatorioActivity extends AppCompatActivity {
         // TODO: 2 - Calcular o número de bebedouros (artifical / natural) de cada invernada
         for (Invernada invernada : fazenda.invernada) {
             for (BebedouroCircular bebedouro : invernada.bebedourosCir){
-                dispay.setText("" + bebedouro.toString());
+                float volume = 0.0F;
+                float pi = (float) 3.14;
+                float raio = Float.parseFloat(bebedouro.raio);
+                float h = bebedouro.altura;
+
+                volume = (float) (pi * Math.pow(raio, 2) * h); //
+
+                dispay.setText("" + String.valueOf(volume));
             }
             for (BebedouroRetangular bebedouro : invernada.bebedourosRet){
                 dispay.setText("" + bebedouro.toString());
+                float volume = 0.0F;
+                Double pi = 3.14;
+                float largura = Float.parseFloat(bebedouro.largura);
+                float altura = bebedouro.altura;
+                float comprimento = Float.parseFloat(bebedouro.comprimento);
+
+                volume = comprimento * largura * altura;
+                dispay.setText("" + String.valueOf(volume));
             }
         }
 
