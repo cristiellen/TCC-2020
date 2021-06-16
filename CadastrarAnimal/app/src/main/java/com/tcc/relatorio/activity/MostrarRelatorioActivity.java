@@ -16,6 +16,7 @@ import com.tcc.main.MainActivity;
 import com.tcc.main.ObjectBox;
 import com.tcc.main.R;
 import io.objectbox.BoxStore;
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -109,7 +110,11 @@ public class MostrarRelatorioActivity extends AppCompatActivity {
 
         // TODO: 2 - Calcular o número de bebedouros (artifical / natural) de cada invernada
         float volumeTotal = 0;
-        float contornoTotal = 0;
+        float perimetroTotal = 0;
+        Integer ideal = 0;
+        Integer moderado = 0;
+        Integer ruim = 0;
+        Integer totalBebedouro = 0;
         for (Invernada invernada : fazenda.invernada) {
             for (BebedouroCircular bebedouro : invernada.bebedourosCir){
                 float volume = 0.0F;
@@ -119,6 +124,16 @@ public class MostrarRelatorioActivity extends AppCompatActivity {
                 volume = (float) (pi * Math.pow(raio, 2) * h); //
 
                 volumeTotal = volumeTotal + volume;
+
+                perimetroTotal = perimetroTotal + 2 * pi * raio;
+
+                if (bebedouro.limpeza.equals("Ideal")) {
+                    ideal = ideal + 1;
+                } else if (bebedouro.limpeza.equals("Moderado")) {
+                    moderado = moderado + 1;
+                } else if (bebedouro.limpeza.equals("Ruim")) {
+                    ruim = ruim + 1;
+                }
 
             }
             for (BebedouroRetangular bebedouro : invernada.bebedourosRet){
@@ -130,7 +145,21 @@ public class MostrarRelatorioActivity extends AppCompatActivity {
                 volume = comprimento * largura * altura;
 
                 volumeTotal = volumeTotal + volume;
+
+                perimetroTotal = perimetroTotal + (2 * comprimento) + (2 * largura);
+
+                if (bebedouro.limpeza.equals("Ideal")) {
+                    ideal = ideal + 1;
+                } else if (bebedouro.limpeza.equals("Moderado")) {
+                    moderado = moderado + 1;
+                } else if (bebedouro.limpeza.equals("Ruim")) {
+                    ruim = ruim + 1;
+                }
+
             }
+
+            totalBebedouro = totalBebedouro + invernada.bebedourosCir.size();
+            totalBebedouro = totalBebedouro + invernada.bebedourosRet.size();
         }
 
 
@@ -146,17 +175,31 @@ public class MostrarRelatorioActivity extends AppCompatActivity {
             dispay.setText("Ruim");
         }
 
-        dispay= (TextView) findViewById(R.id.txtDisplayAguaPorAnimal);
-        float metroLinear = volumeTotal / numeroAnimaisTotal;
-        if (disponibilidade > 50){
+        //Soma do contorno de todos os bebedouros e dividir pelo número de animais do rebanho
+        dispay= (TextView) findViewById(R.id.txtDisplayMetroLinearAnimalBebedouro);
+        float metroLinear = perimetroTotal / numeroAnimaisTotal;
+        if (disponibilidade > 0.1){
             dispay.setText("Ideal");
-        } else if (disponibilidade >= 30 && disponibilidade <= 50) {
+        } else if (disponibilidade >= 0.04 && disponibilidade <= 0.1) {
             dispay.setText("Moderado");
         }
-        else if (disponibilidade < 30) {
+        else if (disponibilidade < 0.04) {
             dispay.setText("Ruim");
         }
 
+
+        dispay= (TextView) findViewById(R.id.txtDisplayLimpeza);
+        if (ideal != 0) {
+            dispay.setText(dispay.getText() +" Ideal: " + (ideal*100)/totalBebedouro + "%");
+        }
+
+        if (moderado != 0) {
+            dispay.setText(dispay.getText() +" // Moderado: " + (moderado*100)/totalBebedouro + "%");
+        }
+
+        if (ruim != 0) {
+            dispay.setText(dispay.getText() +" // Ruim: " + (ruim*100)/totalBebedouro + "%");
+        }
 
         // my_child_toolbar is defined in the layout file
         Toolbar myChildToolbar = (Toolbar) findViewById(R.id.toolbar);

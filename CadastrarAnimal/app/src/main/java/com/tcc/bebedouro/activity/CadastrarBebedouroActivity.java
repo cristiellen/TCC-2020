@@ -42,13 +42,13 @@ public class CadastrarBebedouroActivity extends AppCompatActivity implements Ada
 
 
         Spinner dropdown = findViewById(R.id.spinner1);
-        String[] items = new String[]{"BOM", "RUIM", "ÓTIMO"};
+        String[] items = new String[]{"Ideal", "Moderado", "Ruim"};
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, items);
         dropdown.setAdapter(adapter);
         dropdown.setOnItemSelectedListener(this);
 
         Spinner dropdownLimpeza = findViewById(R.id.spinnerLimpeza);
-        String[] itemsLimpeza = new String[]{"BOM", "RUIM", "ÓTIMO"};
+        String[] itemsLimpeza = new String[]{"Ideal", "Moderado", "Ruim"};
         ArrayAdapter<String> adapterLimpeza = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, itemsLimpeza);
         dropdownLimpeza.setAdapter(adapterLimpeza);
         dropdownLimpeza.setOnItemSelectedListener(this);
@@ -77,7 +77,7 @@ public class CadastrarBebedouroActivity extends AppCompatActivity implements Ada
 
                 if ( findViewById(R.id.txtRaio).getVisibility()==v.VISIBLE){
                   //BEBEDOURO CIRCULAR
-                  String[] items = {"BOM", "RUIM", "ÓTIMO"};
+                  String[] items = {"Ideal", "Moderado", "Ruim"};
                   EditText raio = (EditText) findViewById(R.id.edtRaio);
                   EditText vazao = (EditText) findViewById(R.id.edtVazao);
 
@@ -96,7 +96,7 @@ public class CadastrarBebedouroActivity extends AppCompatActivity implements Ada
               }
               else if (findViewById(R.id.txtRaio).getVisibility()==v.GONE) {
                   //BEBEDOURO RETANGULAR
-                  String[] items = {"BOM", "RUIM", "ÓTIMO"};
+                  String[] items = {"Ideal", "Moderado", "Ruim"};
 
                   EditText comprimento = (EditText) findViewById(R.id.edtComprimento);
                   EditText largura = (EditText) findViewById(R.id.edtLargura);

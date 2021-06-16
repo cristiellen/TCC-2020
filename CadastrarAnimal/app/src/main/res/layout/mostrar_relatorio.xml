@@ -38,9 +38,6 @@
 
 
 
-
-
-
         <TextView
                 android:id="@+id/txtMetroLinearAnimalBebedouro"
                 style="@style/CustomText"
@@ -48,7 +45,7 @@
                 android:layout_height="wrap_content"
                 android:padding="10dp"
                 android:gravity="center"
-                app:layout_constraintTop_toBottomOf="@id/toolbar"
+                app:layout_constraintTop_toBottomOf="@id/txtDisplayAguaPorAnimal"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 android:text="Metro linear por animal no bebedouro" />
@@ -59,6 +56,29 @@
                 android:padding="10dp"
                 android:gravity="center"
                 app:layout_constraintTop_toBottomOf="@id/txtMetroLinearAnimalBebedouro"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                android:text="" />
+
+
+        <TextView
+                android:id="@+id/txtLimpeza"
+                style="@style/CustomText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:gravity="center"
+                app:layout_constraintTop_toBottomOf="@id/txtDisplayMetroLinearAnimalBebedouro"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                android:text="Nivel de limpeza (Porcentagem)" />
+        <TextView
+                android:id="@+id/txtDisplayLimpeza"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:gravity="center"
+                app:layout_constraintTop_toBottomOf="@id/txtLimpeza"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 android:text="" />
