@@ -83,4 +83,49 @@
                 app:layout_constraintRight_toRightOf="parent"
                 android:text="" />
 
+        <TextView
+                android:id="@+id/txtCondicaoAcesso"
+                style="@style/CustomText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:gravity="center"
+                app:layout_constraintTop_toBottomOf="@id/txtDisplayLimpeza"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                android:text="Condiacao de acesso (Porcentagem)" />
+        <TextView
+                android:id="@+id/txtDisplayCondicaoAcesso"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:gravity="center"
+                app:layout_constraintTop_toBottomOf="@id/txtCondicaoAcesso"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                android:text="" />
+
+
+        <TextView
+                android:id="@+id/txtIara"
+                style="@style/CustomText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:gravity="center"
+                app:layout_constraintTop_toBottomOf="@id/txtDisplayCondicaoAcesso"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                android:text="Condiacao de acesso (Porcentagem)" />
+        <TextView
+                android:id="@+id/txtDisplayIara"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:gravity="center"
+                app:layout_constraintTop_toBottomOf="@id/txtIara"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                android:text="" />
+
 </android.support.constraint.ConstraintLayout>

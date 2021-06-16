@@ -114,6 +114,15 @@ public class MostrarRelatorioActivity extends AppCompatActivity {
         Integer ideal = 0;
         Integer moderado = 0;
         Integer ruim = 0;
+
+        Integer idealCond = 0;
+        Integer moderadoCond = 0;
+        Integer ruimCond = 0;
+
+        Integer idealIara = 0;
+        Integer moderadoIara = 0;
+        Integer ruimIara = 0;
+
         Integer totalBebedouro = 0;
         for (Invernada invernada : fazenda.invernada) {
             for (BebedouroCircular bebedouro : invernada.bebedourosCir){
@@ -133,6 +142,14 @@ public class MostrarRelatorioActivity extends AppCompatActivity {
                     moderado = moderado + 1;
                 } else if (bebedouro.limpeza.equals("Ruim")) {
                     ruim = ruim + 1;
+                }
+
+                if (bebedouro.condicaoAcesso.equals("Ideal")) {
+                    idealCond = idealCond + 1;
+                } else if (bebedouro.condicaoAcesso.equals("Moderado")) {
+                    moderadoCond = moderadoCond + 1;
+                } else if (bebedouro.condicaoAcesso.equals("Ruim")) {
+                    ruimCond = ruimCond + 1;
                 }
 
             }
@@ -156,6 +173,14 @@ public class MostrarRelatorioActivity extends AppCompatActivity {
                     ruim = ruim + 1;
                 }
 
+                if (bebedouro.condicaoAcesso.equals("Ideal")) {
+                    idealCond = idealCond + 1;
+                } else if (bebedouro.condicaoAcesso.equals("Moderado")) {
+                    moderadoCond = moderadoCond + 1;
+                } else if (bebedouro.condicaoAcesso.equals("Ruim")) {
+                    ruimCond = ruimCond + 1;
+                }
+
             }
 
             totalBebedouro = totalBebedouro + invernada.bebedourosCir.size();
@@ -168,11 +193,16 @@ public class MostrarRelatorioActivity extends AppCompatActivity {
         float disponibilidade = volumeTotal / numeroAnimaisTotal;
         if (disponibilidade > 50){
             dispay.setText("Ideal");
+
+            idealIara = idealIara + 1;
         } else if (disponibilidade >= 30 && disponibilidade <= 50) {
             dispay.setText("Moderado");
+            moderadoIara = moderadoIara + 1;
         }
         else if (disponibilidade < 30) {
             dispay.setText("Ruim");
+
+            ruimIara = ruimIara + 1;
         }
 
         //Soma do contorno de todos os bebedouros e dividir pelo número de animais do rebanho
@@ -180,25 +210,58 @@ public class MostrarRelatorioActivity extends AppCompatActivity {
         float metroLinear = perimetroTotal / numeroAnimaisTotal;
         if (disponibilidade > 0.1){
             dispay.setText("Ideal");
+            idealIara = idealIara + 1;
         } else if (disponibilidade >= 0.04 && disponibilidade <= 0.1) {
             dispay.setText("Moderado");
+
+            moderadoIara = moderadoIara + 1;
         }
         else if (disponibilidade < 0.04) {
             dispay.setText("Ruim");
+
+            ruimIara = ruimIara + 1;
         }
 
 
         dispay= (TextView) findViewById(R.id.txtDisplayLimpeza);
         if (ideal != 0) {
             dispay.setText(dispay.getText() +" Ideal: " + (ideal*100)/totalBebedouro + "%");
+            idealIara = idealIara + 1;
         }
-
         if (moderado != 0) {
             dispay.setText(dispay.getText() +" // Moderado: " + (moderado*100)/totalBebedouro + "%");
-        }
 
+            moderadoIara = moderadoIara + 1;
+        }
         if (ruim != 0) {
             dispay.setText(dispay.getText() +" // Ruim: " + (ruim*100)/totalBebedouro + "%");
+            ruimIara = ruimIara + 1;
+        }
+
+
+        dispay= (TextView) findViewById(R.id.txtDisplayCondicaoAcesso);
+        if (idealCond != 0) {
+            dispay.setText(dispay.getText() +" Ideal: " + (idealCond*100)/totalBebedouro + "%");
+            idealIara = idealIara + 1;
+        }
+        if (moderadoCond != 0) {
+            dispay.setText(dispay.getText() +" // Moderado: " + (moderadoCond*100)/totalBebedouro + "%");
+
+            moderadoIara = moderadoIara + 1;
+        }
+        if (ruimCond != 0) {
+            dispay.setText(dispay.getText() +" // Ruim: " + (ruimCond*100)/totalBebedouro + "%");
+
+            ruimIara = ruimIara + 1;
+        }
+
+        dispay= (TextView) findViewById(R.id.txtDisplayIara);
+        if (idealIara == 4) {
+            dispay.setText(dispay.getText() +" Escore 3 - Adequado");
+        } else if (moderadoIara >= 1) {
+            dispay.setText(dispay.getText() +" // Escore 2 - Moderado");
+        } else if (ruimIara >= 1) {
+            dispay.setText(dispay.getText() +" // Escore 3 - Ruim ");
         }
 
         // my_child_toolbar is defined in the layout file
