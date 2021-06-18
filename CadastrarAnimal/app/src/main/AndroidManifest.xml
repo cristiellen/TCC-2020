@@ -34,7 +34,7 @@
 
         <activity android:name="com.tcc.invernada.activity.MostrarInvernadaActivity" android:parentActivityName="com.tcc.invernada.activity.ListarInvernadaActivity">
         </activity>
-        <activity android:name="com.tcc.invernada.activity.CadastrarInvernadaActivity" android:parentActivityName="com.tcc.invernada.activity.ListarInvernadaActivity">
+        <activity android:name="com.tcc.invernada.activity.CadastrarInvernadaActivity" android:parentActivityName="com.tcc.fazenda.activity.MostrarFazendaActivity">
         </activity>
         <activity android:name="com.tcc.invernada.activity.ListarInvernadaActivity" android:parentActivityName="com.tcc.main.MainActivity">
         </activity>
