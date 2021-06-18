@@ -31,6 +31,7 @@ public class ListarRelatorioPorFazendaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.listar_relatorio_por_fazenda);
         Toolbar toolbar= findViewById(R.id.toolbar);
+        toolbar.setTitle("Relatório - Fazendas");
         setSupportActionBar(toolbar);
 
         Toolbar myChildToolbar = (Toolbar) findViewById(R.id.toolbar);

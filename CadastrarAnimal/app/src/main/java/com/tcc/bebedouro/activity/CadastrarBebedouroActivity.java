@@ -116,8 +116,8 @@ public class CadastrarBebedouroActivity extends AppCompatActivity implements Ada
         });
 
         // my_child_toolbar is defined in the layout file
-        Toolbar myChildToolbar =
-                (Toolbar) findViewById(R.id.toolbar);
+        Toolbar myChildToolbar = (Toolbar) findViewById(R.id.toolbar);
+        myChildToolbar.setTitle("Cadastro Bebedouro");
         setSupportActionBar(myChildToolbar);
 
         // Get a support ActionBar corresponding to this toolbar

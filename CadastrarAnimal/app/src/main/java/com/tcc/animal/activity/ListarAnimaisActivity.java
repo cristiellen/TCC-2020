@@ -30,6 +30,7 @@ public class ListarAnimaisActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.listar_animal);
         Toolbar toolbar= findViewById(R.id.toolbar);
+        toolbar.setTitle("Animais");
         setSupportActionBar(toolbar);
 
         Toolbar myChildToolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -63,7 +64,7 @@ public class ListarAnimaisActivity extends AppCompatActivity {
 
         //instanciando uma listView para ser conectada a lista da activity main
         ListView listaView = (ListView) findViewById(R.id.lista);
-        listaView.setOnItemClickListener(this::onItemClick);
+        //listaView.setOnItemClickListener(this::onItemClick);
 
         //adapter necessário para passar a forma de que será adionado o conteúdo como a seguir, em simple_list_item_1
         //possui dados de um  text view e também é passado a lista de resultados que possui os objetos cadastrados

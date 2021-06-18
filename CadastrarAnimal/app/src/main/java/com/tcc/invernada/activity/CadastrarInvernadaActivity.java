@@ -64,8 +64,9 @@ public class CadastrarInvernadaActivity extends AppCompatActivity {
         });
 
         // my_child_toolbar is defined in the layout file
-        Toolbar myChildToolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(myChildToolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle("Cadastro Invernada");
+        setSupportActionBar(toolbar);
 
         // Get a support ActionBar corresponding to this toolbar
         ActionBar ab = getSupportActionBar();

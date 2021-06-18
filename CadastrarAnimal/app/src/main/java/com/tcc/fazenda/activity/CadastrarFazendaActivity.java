@@ -58,6 +58,7 @@ public class CadastrarFazendaActivity extends AppCompatActivity {
 
         // my_child_toolbar is defined in the layout file
         Toolbar myChildToolbar = (Toolbar) findViewById(R.id.toolbar);
+        myChildToolbar.setTitle("Cadastro Fazenda");
         setSupportActionBar(myChildToolbar);
 
         // Get a support ActionBar corresponding to this toolbar

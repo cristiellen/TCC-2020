@@ -28,6 +28,7 @@ public class ListarInvernadaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.listar_invernada);
         Toolbar toolbar= findViewById(R.id.toolbar);
+        toolbar.setTitle("Invernadas");
         setSupportActionBar(toolbar);
 
         Toolbar myChildToolbar = (Toolbar) findViewById(R.id.toolbar);

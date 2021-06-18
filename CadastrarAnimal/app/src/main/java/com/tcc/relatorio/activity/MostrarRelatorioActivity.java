@@ -266,6 +266,7 @@ public class MostrarRelatorioActivity extends AppCompatActivity {
 
         // my_child_toolbar is defined in the layout file
         Toolbar myChildToolbar = (Toolbar) findViewById(R.id.toolbar);
+        myChildToolbar.setTitle("Relatório");
         setSupportActionBar(myChildToolbar);
         // Get a support ActionBar corresponding to this toolbar
         ActionBar ab = getSupportActionBar();

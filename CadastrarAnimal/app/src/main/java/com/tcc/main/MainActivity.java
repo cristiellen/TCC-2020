@@ -6,14 +6,12 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.view.View;
+import android.view.*;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import android.widget.Toast;
 import com.tcc.fazenda.activity.CadastrarFazendaActivity;
 import com.tcc.fazenda.activity.MostrarFazendaActivity;
 import com.tcc.fazenda.dao.Fazenda;
@@ -26,12 +24,14 @@ import io.objectbox.Box;
 
 public class MainActivity extends AppCompatActivity {
     private   List<Fazenda> fazendasLista;
+    private Fazenda fazenda;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         Toolbar toolbar= findViewById(R.id.toolbar);
+        toolbar.setTitle("Fazendas");
         setSupportActionBar(toolbar);
 
         Box<Fazenda> fazendaBox = ObjectBox.get().boxFor(Fazenda.class);
@@ -43,6 +43,16 @@ public class MainActivity extends AppCompatActivity {
 
         ListView listaView = (ListView) findViewById(R.id.lista);
         listaView.setOnItemClickListener(this::onItemClick);
+        listaView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            //vai chamar o menu criado na linha 93
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                fazenda = fazendasLista.get(position);//pegando o elemento
+                return false;
+            }
+        });
+        registerForContextMenu(listaView); //habilitando menu de contexto(clicar e segurar pra abrir opções)
+
         ArrayAdapter<Fazenda> adapter = new ArrayAdapter<Fazenda>(this, android.R.layout.simple_list_item_1, fazendasLista );
         listaView.setAdapter(adapter);
 
@@ -99,6 +109,28 @@ public class MainActivity extends AppCompatActivity {
        // Fazenda fazenda= fazendasLista.get(idInt);
         startActivity(intent);
     }
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        MenuItem menuItem = menu.add("Deletar"); //opção do menu que vai aparecer
+        menuItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                ObjectBox.get().boxFor(Fazenda.class).remove(fazenda);
+                Intent intent = new Intent(v.getContext(), MainActivity.class);
+                alerta("Fazenda '"+fazenda.getNome()+"' removida");
+                startActivity(intent);
+                return false;
+            }
+        });
+        super.onCreateContextMenu(menu, v, menuInfo);
+    }
+
+    private void alerta(String mensagem){
+        //funcao pra exibir mensagem básica ao usuario
+        Toast.makeText(this, mensagem, Toast.LENGTH_SHORT).show();
+    }
+
 
 
     //DIVERSAS ANOTAÇÕES

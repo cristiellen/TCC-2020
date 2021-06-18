@@ -19,17 +19,17 @@
             </intent-filter>
 
         </activity>
-        <activity android:name="com.tcc.bebedouro.activity.CadastrarBebedouroActivity" android:parentActivityName="com.tcc.bebedouro.activity.ListarBebedouroActivity">
+        <activity android:name="com.tcc.bebedouro.activity.CadastrarBebedouroActivity" android:parentActivityName="com.tcc.invernada.activity.MostrarInvernadaActivity">
         </activity>
         <activity android:name="com.tcc.fazenda.activity.CadastrarFazendaActivity" android:parentActivityName="com.tcc.main.MainActivity">
         </activity>
-        <activity android:name="com.tcc.animal.activity.ListarAnimaisActivity" android:parentActivityName="com.tcc.main.MainActivity">
+        <activity android:name="com.tcc.animal.activity.ListarAnimaisActivity" android:parentActivityName="com.tcc.invernada.activity.MostrarInvernadaActivity">
         </activity>
-        <activity android:name="com.tcc.bebedouro.activity.ListarBebedouroActivity" android:parentActivityName="com.tcc.main.MainActivity">
+        <activity android:name="com.tcc.bebedouro.activity.ListarBebedouroActivity" android:parentActivityName="com.tcc.invernada.activity.MostrarInvernadaActivity">
         </activity>
         <activity android:name="com.tcc.fazenda.activity.MostrarFazendaActivity" android:parentActivityName="com.tcc.main.MainActivity">
         </activity>
-        <activity android:name="com.tcc.animal.activity.CadastrarAnimalActivity" android:parentActivityName="com.tcc.animal.activity.ListarAnimaisActivity">
+        <activity android:name="com.tcc.animal.activity.CadastrarAnimalActivity" android:parentActivityName="com.tcc.invernada.activity.MostrarInvernadaActivity">
         </activity>
 
         <activity android:name="com.tcc.invernada.activity.MostrarInvernadaActivity" android:parentActivityName="com.tcc.invernada.activity.ListarInvernadaActivity">

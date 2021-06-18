@@ -30,6 +30,7 @@ public class ListarBebedouroActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.listar_bebedouro);
         Toolbar toolbar= findViewById(R.id.toolbar);
+        toolbar.setTitle("Bebedouros");
         setSupportActionBar(toolbar);
 
         Toolbar myChildToolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -69,8 +70,7 @@ public class ListarBebedouroActivity extends AppCompatActivity {
 
 
         ListView listaView = (ListView) findViewById(R.id.lista);
-        listaView.setOnItemClickListener(this::onItemClick);
-
+        //listaView.setOnItemClickListener(this::onItemClick);
 
         ArrayAdapter<Bebedouro> adapter = new ArrayAdapter<Bebedouro>(this, android.R.layout.simple_list_item_1, newList );
 
