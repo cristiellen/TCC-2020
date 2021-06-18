@@ -6,13 +6,17 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.ContextMenu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import android.widget.Toast;
 import com.tcc.animal.dao.Animal;
 import com.tcc.bebedouro.activity.CadastrarBebedouroActivity;
+import com.tcc.invernada.activity.ListarInvernadaActivity;
 import com.tcc.invernada.dao.Invernada;
 import com.tcc.main.MainActivity;
 import com.tcc.main.ObjectBox;
@@ -24,6 +28,7 @@ import io.objectbox.Box;
 import io.objectbox.BoxStore;
 
 public class ListarAnimaisActivity extends AppCompatActivity {
+    private Animal animal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +69,16 @@ public class ListarAnimaisActivity extends AppCompatActivity {
 
         //instanciando uma listView para ser conectada a lista da activity main
         ListView listaView = (ListView) findViewById(R.id.lista);
-        //listaView.setOnItemClickListener(this::onItemClick);
+        listaView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            //vai chamar o menu criado na linha 93
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                animal = animais.get(position);//pegando o elemento
+                return false;
+            }
+        });
+        registerForContextMenu(listaView); //habilitando menu de contexto(clicar e segurar pra abrir opções)
+
 
         //adapter necessário para passar a forma de que será adionado o conteúdo como a seguir, em simple_list_item_1
         //possui dados de um  text view e também é passado a lista de resultados que possui os objetos cadastrados
@@ -91,6 +105,28 @@ public class ListarAnimaisActivity extends AppCompatActivity {
         intent.putExtra("position", position);
         // Or / And
         startActivity(intent);
+    }
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        MenuItem menuItem = menu.add("Deletar"); //opção do menu que vai aparecer
+        menuItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                animal.invernada.setTarget(null);
+                ObjectBox.get().boxFor(Animal.class).remove(animal);
+                Intent intent = new Intent(v.getContext(), ListarAnimaisActivity.class);
+                alerta("Registro de '"+animal.getTipo()+"' removida");
+                startActivity(intent);
+                return false;
+            }
+        });
+        super.onCreateContextMenu(menu, v, menuInfo);
+    }
+
+    private void alerta(String mensagem){
+        //funcao pra exibir mensagem básica ao usuario
+        Toast.makeText(this, mensagem, Toast.LENGTH_SHORT).show();
     }
 
     //TODO: PRIMEIRO LISTAR E CADASTRAR A APARECER DEVE SER O DA FAZENDA

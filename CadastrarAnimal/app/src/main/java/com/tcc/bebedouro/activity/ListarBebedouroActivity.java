@@ -6,11 +6,16 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.ContextMenu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import android.widget.Toast;
+import com.tcc.animal.activity.ListarAnimaisActivity;
+import com.tcc.animal.dao.Animal;
 import com.tcc.bebedouro.dao.Bebedouro;
 import com.tcc.bebedouro.dao.BebedouroCircular;
 import com.tcc.bebedouro.dao.BebedouroRetangular;
@@ -24,6 +29,7 @@ import io.objectbox.BoxStore;
 import java.util.ArrayList;
 
 public class ListarBebedouroActivity extends AppCompatActivity {
+    private Bebedouro bebedouro;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,33 +52,42 @@ public class ListarBebedouroActivity extends AppCompatActivity {
         Box<BebedouroCircular> bebedouroCircularBox = boxStore.boxFor(BebedouroCircular.class);
         Box<BebedouroRetangular> bebedouroRetangularBox = boxStore.boxFor(BebedouroRetangular.class);
 
-        ArrayList<Bebedouro> newList = new ArrayList<Bebedouro>();
+        ArrayList<Bebedouro> bebedouros = new ArrayList<Bebedouro>();
         ArrayList<BebedouroCircular> bebedourosCir = (ArrayList<BebedouroCircular>) bebedouroCircularBox.getAll();
         ArrayList<BebedouroRetangular> bebedourosRet = (ArrayList<BebedouroRetangular>) bebedouroRetangularBox.getAll();
 
         for (BebedouroCircular obj : bebedourosCir) {
             if (obj.invernada.getTargetId() == Invernada.getId_temp()){
-                newList.add(obj);
+                bebedouros.add(obj);
             }
         }
         for (BebedouroRetangular obj : bebedourosRet) {
             if (obj.invernada.getTargetId() == Invernada.getId_temp()){
-                newList.add(obj);
+                bebedouros.add(obj);
             }
         }
 
         //Condição para mudar a tela, caso não haja conteúdo cadastrado na lista
         //vai abrir o cadastrar se não vai para a tela do listar.
         Intent intent = new Intent(this, CadastrarBebedouroActivity.class);
-        if (newList.size() <= 0) {
+        if (bebedouros.size() <= 0) {
             startActivity(intent);
         }
 
 
         ListView listaView = (ListView) findViewById(R.id.lista);
-        //listaView.setOnItemClickListener(this::onItemClick);
+        listaView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            //vai chamar o menu criado na linha 93
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                bebedouro = bebedouros.get(position);
+                return false;
+            }
+        });
+        registerForContextMenu(listaView); //habilitando menu de contexto(clicar e segurar pra abrir opções)
 
-        ArrayAdapter<Bebedouro> adapter = new ArrayAdapter<Bebedouro>(this, android.R.layout.simple_list_item_1, newList );
+
+        ArrayAdapter<Bebedouro> adapter = new ArrayAdapter<Bebedouro>(this, android.R.layout.simple_list_item_1, bebedouros );
 
         listaView.setAdapter(adapter);
 
@@ -89,6 +104,35 @@ public class ListarBebedouroActivity extends AppCompatActivity {
         Intent intent = new Intent();
         intent.setClass(this, CadastrarBebedouroActivity.class);
         startActivity(intent);
+    }
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        MenuItem menuItem = menu.add("Deletar"); //opção do menu que vai aparecer
+        menuItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                BebedouroCircular beC = ObjectBox.get().boxFor(BebedouroCircular.class).get(bebedouro.getId());
+                BebedouroRetangular beT = ObjectBox.get().boxFor(BebedouroRetangular.class).get(bebedouro.getId());
+
+                if (beC != null) {
+                    ObjectBox.get().boxFor(BebedouroCircular.class).remove(beC);
+                } else {
+                    ObjectBox.get().boxFor(BebedouroRetangular.class).remove(beT);
+                }
+
+                Intent intent = new Intent(v.getContext(), ListarBebedouroActivity.class);
+                alerta("Bebedouro removido");
+                startActivity(intent);
+                return false;
+            }
+        });
+        super.onCreateContextMenu(menu, v, menuInfo);
+    }
+
+    private void alerta(String mensagem){
+        //funcao pra exibir mensagem básica ao usuario
+        Toast.makeText(this, mensagem, Toast.LENGTH_SHORT).show();
     }
 
 
