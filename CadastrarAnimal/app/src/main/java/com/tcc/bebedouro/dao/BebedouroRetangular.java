@@ -48,6 +48,6 @@ public class BebedouroRetangular extends Bebedouro {
 
     @Override
     public String toString(){
-        return "comprimento: " + this.comprimento+", largura: "+ this.largura + ", altura: " + this.altura + ", limpeza: " + this.limpeza;
+        return "comprimento: " + this.comprimento+", largura: "+ this.largura + ", altura: " + this.altura + ", Condição acesso: " + this.condicaoAcesso + ", limpeza: " + this.limpeza;
     }
 }

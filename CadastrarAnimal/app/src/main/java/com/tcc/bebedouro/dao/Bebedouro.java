@@ -6,6 +6,7 @@ import com.tcc.invernada.dao.Invernada;
 import io.objectbox.annotation.BaseEntity;
 import io.objectbox.annotation.Entity;
 import io.objectbox.annotation.Id;
+import io.objectbox.annotation.Transient;
 import io.objectbox.relation.ToOne;
 
 @BaseEntity
@@ -16,6 +17,8 @@ public abstract class Bebedouro {
     public float altura;
     public String condicaoAcesso;
     public String limpeza;
+    @Transient
+    private static long id_temp;
 
 
     public Bebedouro(float altura, String condicaoAcesso, String limpeza) {
@@ -58,6 +61,14 @@ public abstract class Bebedouro {
 
     public void setLimpeza(String limpeza) {
         this.limpeza = limpeza;
+    }
+
+    public static long getId_temp() {
+        return id_temp;
+    }
+
+    public static void setId_temp(long id_temp) {
+        Bebedouro.id_temp = id_temp;
     }
 
     @Override

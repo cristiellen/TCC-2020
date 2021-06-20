@@ -103,7 +103,7 @@ public class AtualizarAnimalActivity extends AppCompatActivity implements Adapte
 
         for (String item : tiposRebanho) {
             if (item.equals(animal.getTipo())) {
-                spinner.setSelection(3);
+                spinner.setSelection(index);
             }
             index = index + 1;
         }

@@ -21,6 +21,8 @@
         </activity>
         <activity android:name="com.tcc.bebedouro.activity.CadastrarBebedouroActivity" android:parentActivityName="com.tcc.invernada.activity.MostrarInvernadaActivity">
         </activity>
+        <activity android:name="com.tcc.bebedouro.activity.AtualizarBebedouroActivity" android:parentActivityName="com.tcc.invernada.activity.MostrarInvernadaActivity">
+        </activity>
         <activity android:name="com.tcc.fazenda.activity.CadastrarFazendaActivity" android:parentActivityName="com.tcc.main.MainActivity">
         </activity>
         <activity android:name="com.tcc.fazenda.activity.AtualizarFazendaActivity" android:parentActivityName="com.tcc.main.MainActivity">

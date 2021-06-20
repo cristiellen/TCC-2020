@@ -48,6 +48,6 @@ public class BebedouroCircular extends Bebedouro {
 
     @Override
     public String toString(){
-        return "raio: " + this.raio+", vazão: "+ this.vazao + ", altura: " + this.altura + ", limpeza: " + this.limpeza;
+        return "raio: " + this.raio+", vazão: "+ this.vazao + ", altura: " + this.altura + ", Condição acesso: " + this.condicaoAcesso + ", limpeza: " + this.limpeza;
     }
 }

@@ -127,6 +127,18 @@ public class ListarBebedouroActivity extends AppCompatActivity {
                 return false;
             }
         });
+
+        menuItem = menu.add("Editar"); //opção do menu que vai aparecer
+        menuItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                Bebedouro.setId_temp(bebedouro.getId());
+
+                Intent intent = new Intent(v.getContext(), AtualizarBebedouroActivity.class);
+                startActivity(intent);
+                return false;
+            }
+        });
         super.onCreateContextMenu(menu, v, menuInfo);
     }
 
