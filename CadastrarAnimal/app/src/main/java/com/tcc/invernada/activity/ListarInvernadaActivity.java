@@ -109,6 +109,18 @@ public class ListarInvernadaActivity extends AppCompatActivity {
                 return false;
             }
         });
+
+        menuItem = menu.add("Editar"); //opção do menu que vai aparecer
+        menuItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                Invernada.setId_temp(invernada.getId());
+
+                Intent intent = new Intent(v.getContext(), AtualizarInvernadaActivity.class);
+                startActivity(intent);
+                return false;
+            }
+        });
         super.onCreateContextMenu(menu, v, menuInfo);
     }
 

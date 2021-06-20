@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.tcc.fazenda.activity.AtualizarFazendaActivity">
+    <include
+        android:id="@+id/toolbar"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        layout="@layout/toolbar" />
+
+            <TextView
+                android:id="@+id/txFazenda"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/toolbar"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:text="FAZENDA:" />
+            <EditText
+                android:id="@+id/edtFazenda"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/txFazenda"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:inputType="text" />
+            <RadioGroup
+                android:layout_width="wrap_content"
+                android:id="@+id/radio"
+                app:layout_constraintTop_toBottomOf="@id/edtFazenda"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:layout_height="wrap_content"/>
+            <Button
+                android:id="@+id/btSalvar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/radio"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:text="SALVAR" />
+            <Button
+                android:id="@+id/btVoltar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/radio"
+                app:layout_constraintLeft_toRightOf="@id/btSalvar"
+                android:text="VOLTAR" />
+
+</android.support.constraint.ConstraintLayout>

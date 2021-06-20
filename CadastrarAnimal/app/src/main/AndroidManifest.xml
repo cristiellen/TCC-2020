@@ -23,6 +23,8 @@
         </activity>
         <activity android:name="com.tcc.fazenda.activity.CadastrarFazendaActivity" android:parentActivityName="com.tcc.main.MainActivity">
         </activity>
+        <activity android:name="com.tcc.fazenda.activity.AtualizarFazendaActivity" android:parentActivityName="com.tcc.main.MainActivity">
+        </activity>
         <activity android:name="com.tcc.animal.activity.ListarAnimaisActivity" android:parentActivityName="com.tcc.invernada.activity.MostrarInvernadaActivity">
         </activity>
         <activity android:name="com.tcc.bebedouro.activity.ListarBebedouroActivity" android:parentActivityName="com.tcc.invernada.activity.MostrarInvernadaActivity">
@@ -35,6 +37,8 @@
         <activity android:name="com.tcc.invernada.activity.MostrarInvernadaActivity" android:parentActivityName="com.tcc.invernada.activity.ListarInvernadaActivity">
         </activity>
         <activity android:name="com.tcc.invernada.activity.CadastrarInvernadaActivity" android:parentActivityName="com.tcc.fazenda.activity.MostrarFazendaActivity">
+        </activity>
+        <activity android:name="com.tcc.invernada.activity.AtualizarInvernadaActivity" android:parentActivityName="com.tcc.fazenda.activity.MostrarFazendaActivity">
         </activity>
         <activity android:name="com.tcc.invernada.activity.ListarInvernadaActivity" android:parentActivityName="com.tcc.main.MainActivity">
         </activity>

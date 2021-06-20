@@ -12,6 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import android.widget.Toast;
+import com.tcc.fazenda.activity.AtualizarFazendaActivity;
 import com.tcc.fazenda.activity.CadastrarFazendaActivity;
 import com.tcc.fazenda.activity.MostrarFazendaActivity;
 import com.tcc.fazenda.dao.Fazenda;
@@ -119,6 +120,17 @@ public class MainActivity extends AppCompatActivity {
                 ObjectBox.get().boxFor(Fazenda.class).remove(fazenda);
                 Intent intent = new Intent(v.getContext(), MainActivity.class);
                 alerta("Fazenda '"+fazenda.getNome()+"' removida");
+                startActivity(intent);
+                return false;
+            }
+        });
+
+        menuItem = menu.add("Editar"); //opção do menu que vai aparecer
+        menuItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                Fazenda.setId_temp(fazenda.getId());
+                Intent intent = new Intent(v.getContext(), AtualizarFazendaActivity.class);
                 startActivity(intent);
                 return false;
             }
