@@ -5,6 +5,7 @@ import com.tcc.fazenda.dao.Fazenda;
 import com.tcc.invernada.dao.Invernada;
 import io.objectbox.annotation.Entity;
 import io.objectbox.annotation.Id;
+import io.objectbox.annotation.Transient;
 import io.objectbox.relation.ToOne;
 
 @Entity
@@ -14,6 +15,9 @@ public class Animal {
     public int quantidade;
     public String tipo;
     public String relevo;
+
+    @Transient
+    private static long id_temp;
 
 
     public ToOne<Invernada> invernada;
@@ -58,6 +62,14 @@ public class Animal {
 
     public void setRelevo(String relevo) {
         this.relevo = relevo;
+    }
+
+    public static long getId_temp() {
+        return id_temp;
+    }
+
+    public static void setId_temp(long id_temp) {
+        Animal.id_temp = id_temp;
     }
 
     @Override

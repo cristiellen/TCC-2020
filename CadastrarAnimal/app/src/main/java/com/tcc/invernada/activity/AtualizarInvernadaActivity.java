@@ -72,7 +72,7 @@ public class AtualizarInvernadaActivity extends AppCompatActivity {
         ab.setDisplayHomeAsUpEnabled(true);
     }
 
-    }
+}
 
 
 

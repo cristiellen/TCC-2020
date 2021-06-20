@@ -33,6 +33,8 @@
         </activity>
         <activity android:name="com.tcc.animal.activity.CadastrarAnimalActivity" android:parentActivityName="com.tcc.invernada.activity.MostrarInvernadaActivity">
         </activity>
+        <activity android:name="com.tcc.animal.activity.AtualizarAnimalActivity" android:parentActivityName="com.tcc.invernada.activity.MostrarInvernadaActivity">
+        </activity>
 
         <activity android:name="com.tcc.invernada.activity.MostrarInvernadaActivity" android:parentActivityName="com.tcc.invernada.activity.ListarInvernadaActivity">
         </activity>

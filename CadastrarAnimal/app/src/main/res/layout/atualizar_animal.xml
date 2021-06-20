@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.tcc.animal.activity.AtualizarAnimalActivity">
+
+    <include
+        android:id="@+id/toolbar"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        layout="@layout/toolbar"/>
+
+
+    <TextView
+        android:id="@+id/txtComprimento"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:text="QUANTIDADE:" />
+
+    <EditText
+        android:id="@+id/edtCompr"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        app:layout_constraintTop_toBottomOf="@id/txtComprimento"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:inputType="number" />
+
+    <TextView
+        android:id="@+id/txanimal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/edtCompr"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:text="ANIMAL:" />
+
+    <Spinner
+        android:id="@+id/spinnerTipo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:drawable/btn_dropdown"
+        app:layout_constraintTop_toBottomOf="@id/txanimal"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:spinnerMode="dropdown"/>
+
+    <RadioGroup
+        android:id="@+id/rg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/spinnerTipo"
+        app:layout_constraintLeft_toLeftOf="parent">
+
+        <RadioButton
+            android:id="@+id/rbPlanicie"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="planicie" />
+
+        <RadioButton
+            android:id="@+id/rbPlanalto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="planalto" />
+    </RadioGroup>
+
+
+    <Button
+        android:id="@+id/btSalvar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/rg"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:text="SALVAR" />
+
+
+</android.support.constraint.ConstraintLayout>
