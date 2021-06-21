@@ -58,6 +58,12 @@ public class AtualizarBebedouroActivity extends AppCompatActivity implements Ada
         dropdownLimpeza.setAdapter(adapterLimpeza);
         dropdownLimpeza.setOnItemSelectedListener(this);
 
+        Spinner dropdownDistancia = findViewById(R.id.spinnerDistancia);
+        String[] itemsDistancia = new String[]{"Ideal", "Moderado", "Ruim"};
+        ArrayAdapter<String> adapterDistancia = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, itemsDistancia);
+        dropdownDistancia.setAdapter(adapterDistancia);
+        dropdownDistancia.setOnItemSelectedListener(this);
+
         RadioGroup groupRadio= findViewById(R.id.groupRadio);
         groupRadio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -90,12 +96,14 @@ public class AtualizarBebedouroActivity extends AppCompatActivity implements Ada
                   EditText altura = (EditText) findViewById(R.id.edtAltura);
                   Spinner condicaoAcesso = (Spinner) findViewById(R.id.spinner1);
                   Spinner limpeza = (Spinner) findViewById(R.id.spinnerLimpeza);
+                  Spinner distancia = (Spinner) findViewById(R.id.spinnerDistancia);
 
                   bebCirc.setAltura(Float.parseFloat(altura.getText().toString()));
                   bebCirc.setCondicaoAcesso(condicaoAcesso.getSelectedItem().toString());
                   bebCirc.setLimpeza(limpeza.getSelectedItem().toString());
                   bebCirc.setRaio(raio.getText().toString());
                   bebCirc.setVazao(vazao.getText().toString());
+                  bebCirc.setDistanciaAcesso(distancia.getSelectedItem().toString());
 
                   circularBox.put(bebCirc);
 
@@ -112,12 +120,14 @@ public class AtualizarBebedouroActivity extends AppCompatActivity implements Ada
                   EditText altura = (EditText) findViewById(R.id.edtAltura);
                   Spinner condicaoAcesso = (Spinner) findViewById(R.id.spinner1);
                   Spinner limpeza = (Spinner) findViewById(R.id.spinnerLimpeza);
+                  Spinner distancia = (Spinner) findViewById(R.id.spinnerDistancia);
 
                   bebRet.setAltura(Float.parseFloat(altura.getText().toString()));
                   bebRet.setCondicaoAcesso(condicaoAcesso.getSelectedItem().toString());
                   bebRet.setLimpeza(limpeza.getSelectedItem().toString());
                   bebRet.setComprimento(comprimento.getText().toString());
                   bebRet.setLargura(largura.getText().toString());
+                  bebRet.setDistanciaAcesso(distancia.getSelectedItem().toString());
 
                   retangularBox.put(bebRet);
                   startActivity(intent);
@@ -155,6 +165,9 @@ public class AtualizarBebedouroActivity extends AppCompatActivity implements Ada
             RadioGroup radiog = (RadioGroup) findViewById(R.id.groupRadio);
             ((RadioButton) radiog.getChildAt(0)).setChecked(true);
 
+            findViewById(R.id.rbRetangular).setVisibility(View.GONE);
+
+
             EditText raio = (EditText) findViewById(R.id.edtRaio);
             raio.setText(bebCirc.getRaio());
 
@@ -175,7 +188,6 @@ public class AtualizarBebedouroActivity extends AppCompatActivity implements Ada
             }
 
             Spinner limpeza = (Spinner) findViewById(R.id.spinnerLimpeza);
-
             index = 0;
             for (String item : items){
                 if (item.equals(bebCirc.getLimpeza())) {
@@ -184,11 +196,24 @@ public class AtualizarBebedouroActivity extends AppCompatActivity implements Ada
 
                 index = index + 1;
             }
+
+            Spinner distancia = (Spinner) findViewById(R.id.spinnerDistancia);
+            index = 0;
+            for (String item : items){
+                if (item.equals(bebCirc.getDistanciaAcesso())) {
+                    distancia.setSelection(index);
+                }
+
+                index = index + 1;
+            }
+
             circular = true;
         } else {
             //BEBEDOURO RETANGULAR
             RadioGroup radiog = (RadioGroup) findViewById(R.id.groupRadio);
             ((RadioButton) radiog.getChildAt(1)).setChecked(true);
+
+            findViewById(R.id.rbCircular).setVisibility(View.GONE);
 
             EditText comprimento = (EditText) findViewById(R.id.edtComprimento);
             comprimento.setText(bebRet.getComprimento());
@@ -214,6 +239,16 @@ public class AtualizarBebedouroActivity extends AppCompatActivity implements Ada
                 if (item.equals(bebRet.getLimpeza())) {
                     limpeza.setSelection(index);
                 }
+                index = index + 1;
+            }
+
+            Spinner distancia = (Spinner) findViewById(R.id.spinnerDistancia);
+            index = 0;
+            for (String item : items){
+                if (item.equals(bebRet.getDistanciaAcesso())) {
+                    distancia.setSelection(index);
+                }
+
                 index = index + 1;
             }
 

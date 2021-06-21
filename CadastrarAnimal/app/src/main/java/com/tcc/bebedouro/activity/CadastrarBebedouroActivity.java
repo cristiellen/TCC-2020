@@ -53,6 +53,12 @@ public class CadastrarBebedouroActivity extends AppCompatActivity implements Ada
         dropdownLimpeza.setAdapter(adapterLimpeza);
         dropdownLimpeza.setOnItemSelectedListener(this);
 
+        Spinner dropdownDistancia = findViewById(R.id.spinnerDistancia);
+        String[] itemsDistancia = new String[]{"Ideal", "Moderado", "Ruim"};
+        ArrayAdapter<String> adapterDistancia = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, itemsDistancia);
+        dropdownDistancia.setAdapter(adapterDistancia);
+        dropdownDistancia.setOnItemSelectedListener(this);
+
         RadioGroup groupRadio= findViewById(R.id.groupRadio);
         groupRadio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -84,8 +90,9 @@ public class CadastrarBebedouroActivity extends AppCompatActivity implements Ada
                   EditText altura = (EditText) findViewById(R.id.edtAltura);
                   Spinner condicaoAcesso = (Spinner) findViewById(R.id.spinner1);
                   Spinner limpeza = (Spinner) findViewById(R.id.spinnerLimpeza);
+                  Spinner distancia = (Spinner) findViewById(R.id.spinnerDistancia);
 
-                  BebedouroCircular bebedouroCircular = new BebedouroCircular(Float.parseFloat(altura.getText().toString()), condicaoAcesso.getSelectedItem().toString(), limpeza.getSelectedItem().toString(), raio.getText().toString(),vazao.getText().toString());
+                  BebedouroCircular bebedouroCircular = new BebedouroCircular(Float.parseFloat(altura.getText().toString()), condicaoAcesso.getSelectedItem().toString(), limpeza.getSelectedItem().toString(), raio.getText().toString(),vazao.getText().toString(), distancia.getSelectedItem().toString());
 
                   Invernada invernada = invernadaBox.get(Invernada.getId_temp());
                   bebedouroCircular.invernada.setTarget(invernada);
@@ -104,8 +111,9 @@ public class CadastrarBebedouroActivity extends AppCompatActivity implements Ada
                   EditText altura = (EditText) findViewById(R.id.edtAltura);
                   Spinner condicaoAcesso = (Spinner) findViewById(R.id.spinner1);
                   Spinner limpeza = (Spinner) findViewById(R.id.spinnerLimpeza);
+                  Spinner distancia = (Spinner) findViewById(R.id.spinnerDistancia);
 
-                  BebedouroRetangular bebedouroRetangular = new BebedouroRetangular(Float.parseFloat(altura.getText().toString()), condicaoAcesso.getSelectedItem().toString(), limpeza.getSelectedItem().toString(), comprimento.getText().toString(),largura.getText().toString());
+                  BebedouroRetangular bebedouroRetangular = new BebedouroRetangular(Float.parseFloat(altura.getText().toString()), condicaoAcesso.getSelectedItem().toString(), limpeza.getSelectedItem().toString(), comprimento.getText().toString(),largura.getText().toString(), distancia.getSelectedItem().toString());
 
                   Invernada invernada = invernadaBox.get(Invernada.getId_temp());
                   bebedouroRetangular.invernada.setTarget(invernada);

@@ -1,168 +1,192 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="com.tcc.bebedouro.activity.AtualizarBebedouroActivity">
-    <include
-        android:id="@+id/toolbar"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        layout="@layout/toolbar"/>
+    tools:layout_editor_absoluteX="0dp"
+    tools:layout_editor_absoluteY="0dp"
+    android:fillViewport="true">
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context="com.tcc.bebedouro.activity.AtualizarBebedouroActivity">
+        <include
+            android:id="@+id/toolbar"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            layout="@layout/toolbar"/>
 
 
 
-    <RadioGroup
-        android:id="@+id/groupRadio"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/toolbar"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:orientation="horizontal"
-        >
-
-        <RadioButton
-            android:id="@+id/rbCircular"
+        <RadioGroup
+            android:id="@+id/groupRadio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="BEBEDOURO CIRCULAR"
-            android:checked="true" />
+            app:layout_constraintTop_toBottomOf="@id/toolbar"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:orientation="horizontal"
+            >
 
-        <RadioButton
-            android:id="@+id/rbRetangular"
-            android:layout_width="wrap_content"
+            <RadioButton
+                android:id="@+id/rbCircular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="BEBEDOURO CIRCULAR"
+                android:checked="true" />
+
+            <RadioButton
+                android:id="@+id/rbRetangular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="BEBEDOURO RETANGULAR" />
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/txtRaio"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="BEBEDOURO RETANGULAR" />
-    </RadioGroup>
+            app:layout_constraintTop_toBottomOf="@id/groupRadio"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:text="RAIO" />
 
-    <TextView
-        android:id="@+id/txtRaio"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/groupRadio"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:text="RAIO" />
+        <EditText
+            android:id="@+id/edtRaio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            app:layout_constraintTop_toBottomOf="@id/txtRaio"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:inputType="numberDecimal" />
 
-    <EditText
-        android:id="@+id/edtRaio"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        app:layout_constraintTop_toBottomOf="@id/txtRaio"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:inputType="numberDecimal" />
+        <TextView
+            android:id="@+id/txtComprimento"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/edtRaio"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:text="COMPRIMENTO" />
 
-    <TextView
-        android:id="@+id/txtComprimento"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/edtRaio"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:text="COMPRIMENTO" />
+        <EditText
+            android:id="@+id/edtComprimento"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            app:layout_constraintTop_toBottomOf="@id/txtComprimento"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:inputType="numberDecimal" />
 
-    <EditText
-        android:id="@+id/edtComprimento"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        app:layout_constraintTop_toBottomOf="@id/txtComprimento"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:inputType="numberDecimal" />
+        <TextView
+            android:id="@+id/txtAltura"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/edtComprimento"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:text="ALTURA" />
 
-    <TextView
-        android:id="@+id/txtAltura"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/edtComprimento"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:text="ALTURA" />
+        <EditText
+            android:id="@+id/edtAltura"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            app:layout_constraintTop_toBottomOf="@id/txtAltura"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:inputType="numberDecimal" />
+        <TextView
+            android:id="@+id/txtVazao"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/edtAltura"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:text="VAZÃO" />
 
-    <EditText
-        android:id="@+id/edtAltura"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        app:layout_constraintTop_toBottomOf="@id/txtAltura"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:inputType="numberDecimal" />
-    <TextView
-        android:id="@+id/txtVazao"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/edtAltura"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:text="VAZÃO" />
+        <EditText
+            android:id="@+id/edtVazao"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            app:layout_constraintTop_toBottomOf="@id/txtVazao"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:inputType="numberDecimal" />
+        <TextView
+            android:id="@+id/txtLargura"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/edtVazao"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:text="LARGURA" />
 
-    <EditText
-        android:id="@+id/edtVazao"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        app:layout_constraintTop_toBottomOf="@id/txtVazao"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:inputType="numberDecimal" />
-    <TextView
-        android:id="@+id/txtLargura"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/edtVazao"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:text="LARGURA" />
+        <EditText
+            android:id="@+id/edtLargura"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            app:layout_constraintTop_toBottomOf="@id/txtLargura"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:inputType="numberDecimal" />
 
-    <EditText
-        android:id="@+id/edtLargura"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        app:layout_constraintTop_toBottomOf="@id/txtLargura"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:inputType="numberDecimal" />
+        <TextView
+            android:id="@+id/txtCondicaoAcesso"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/edtLargura"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:text="CONDIÇÃO DE ACESSO" />
 
-    <TextView
-        android:id="@+id/txtCondicaoAcesso"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/edtLargura"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:text="CONDIÇÃO DE ACESSO" />
+        <Spinner
+            android:id="@+id/spinner1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:drawable/btn_dropdown"
+            app:layout_constraintTop_toBottomOf="@id/txtCondicaoAcesso"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:spinnerMode="dropdown"/>
 
-    <Spinner
-        android:id="@+id/spinner1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@android:drawable/btn_dropdown"
-        app:layout_constraintTop_toBottomOf="@id/txtCondicaoAcesso"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:spinnerMode="dropdown"/>
+        <TextView
+            android:id="@+id/txtLimpeza"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/spinner1"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:text="CONDIÇÃO DE LIMPEZA DO BEBEDOURO" />
 
-    <TextView
-        android:id="@+id/txtLimpeza"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/spinner1"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:text="CONDIÇÃO DE LIMPEZA DO BEBEDOURO" />
+        <Spinner
+            android:id="@+id/spinnerLimpeza"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:drawable/btn_dropdown"
+            app:layout_constraintTop_toBottomOf="@id/txtLimpeza"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:spinnerMode="dropdown"/>
 
-    <Spinner
-        android:id="@+id/spinnerLimpeza"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@android:drawable/btn_dropdown"
-        app:layout_constraintTop_toBottomOf="@id/txtLimpeza"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:spinnerMode="dropdown"/>
+        <TextView
+                android:id="@+id/txtDistancia"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/spinnerLimpeza"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:text="Distância de acesso ao bebedouro: Ideal – Até 2 km, Moderado – de 2 a 4 km, Ruim – Acima de 4 km" />
 
-    <Button
-        android:id="@+id/btSalvar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/spinnerLimpeza"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:text="SALVAR" />
+        <Spinner
+                android:id="@+id/spinnerDistancia"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:drawable/btn_dropdown"
+                app:layout_constraintTop_toBottomOf="@id/txtDistancia"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:spinnerMode="dropdown"/>
 
-
-</android.support.constraint.ConstraintLayout>
+        <Button
+                android:id="@+id/btSalvar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/spinnerDistancia"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:text="SALVAR" />
+    </android.support.constraint.ConstraintLayout>
+</ScrollView>

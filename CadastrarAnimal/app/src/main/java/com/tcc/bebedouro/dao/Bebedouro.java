@@ -17,14 +17,17 @@ public abstract class Bebedouro {
     public float altura;
     public String condicaoAcesso;
     public String limpeza;
+    public String distanciaAcesso;
+
     @Transient
     private static long id_temp;
 
 
-    public Bebedouro(float altura, String condicaoAcesso, String limpeza) {
+    public Bebedouro(float altura, String condicaoAcesso, String limpeza, String distanciaAcesso) {
         this.altura = altura;
         this.condicaoAcesso = condicaoAcesso;
         this.limpeza = limpeza;
+        this.distanciaAcesso = distanciaAcesso;
     }
 
     public Bebedouro( ) {
@@ -69,6 +72,14 @@ public abstract class Bebedouro {
 
     public static void setId_temp(long id_temp) {
         Bebedouro.id_temp = id_temp;
+    }
+
+    public String getDistanciaAcesso() {
+        return distanciaAcesso;
+    }
+
+    public void setDistanciaAcesso(String distanciaAcesso) {
+        this.distanciaAcesso = distanciaAcesso;
     }
 
     @Override
