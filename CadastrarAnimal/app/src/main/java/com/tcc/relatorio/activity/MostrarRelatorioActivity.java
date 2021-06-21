@@ -119,6 +119,10 @@ public class MostrarRelatorioActivity extends AppCompatActivity {
         Integer moderadoCond = 0;
         Integer ruimCond = 0;
 
+        Integer idealDist = 0;
+        Integer moderadoDist = 0;
+        Integer ruimDist = 0;
+
         Integer idealIara = 0;
         Integer moderadoIara = 0;
         Integer ruimIara = 0;
@@ -152,6 +156,14 @@ public class MostrarRelatorioActivity extends AppCompatActivity {
                     ruimCond = ruimCond + 1;
                 }
 
+                if (bebedouro.distanciaAcesso.equals("Ideal")) {
+                    idealDist = idealDist + 1;
+                } else if (bebedouro.distanciaAcesso.equals("Moderado")) {
+                    moderadoDist = moderadoDist + 1;
+                } else if (bebedouro.distanciaAcesso.equals("Ruim")) {
+                    ruimDist = ruimDist + 1;
+                }
+
             }
             for (BebedouroRetangular bebedouro : invernada.bebedourosRet){
                 float volume = 0.0F;
@@ -179,6 +191,14 @@ public class MostrarRelatorioActivity extends AppCompatActivity {
                     moderadoCond = moderadoCond + 1;
                 } else if (bebedouro.condicaoAcesso.equals("Ruim")) {
                     ruimCond = ruimCond + 1;
+                }
+
+                if (bebedouro.distanciaAcesso.equals("Ideal")) {
+                    idealDist = idealDist + 1;
+                } else if (bebedouro.distanciaAcesso.equals("Moderado")) {
+                    moderadoDist = moderadoDist + 1;
+                } else if (bebedouro.distanciaAcesso.equals("Ruim")) {
+                    ruimDist = ruimDist + 1;
                 }
 
             }
@@ -251,6 +271,23 @@ public class MostrarRelatorioActivity extends AppCompatActivity {
         }
         if (ruimCond != 0) {
             dispay.setText(dispay.getText() +" // Ruim: " + (ruimCond*100)/totalBebedouro + "%");
+
+            ruimIara = ruimIara + 1;
+        }
+
+        dispay= (TextView) findViewById(R.id.txtDisplayDistancia);
+        if (idealDist != 0) {
+            dispay.setText(dispay.getText() +" Ideal: " + (idealDist*100)/totalBebedouro + "%");
+
+            idealIara = idealIara + 1;
+        }
+        if (moderadoDist != 0) {
+            dispay.setText(dispay.getText() +" // Moderado: " + (moderadoDist*100)/totalBebedouro + "%");
+
+            moderadoIara = moderadoIara + 1;
+        }
+        if (ruimDist != 0) {
+            dispay.setText(dispay.getText() +" // Ruim: " + (ruimDist*100)/totalBebedouro + "%");
 
             ruimIara = ruimIara + 1;
         }

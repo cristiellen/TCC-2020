@@ -1,131 +1,162 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="horizontal"
-    tools:context="com.tcc.relatorio.activity.MostrarRelatorioActivity">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp"
+        android:fillViewport="true">
+        <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            tools:context="com.tcc.relatorio.activity.MostrarRelatorioActivity">
 
 
-        <include
-            android:id="@+id/toolbar"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            layout="@layout/toolbar" />
+                <include
+                    android:id="@+id/toolbar"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    layout="@layout/toolbar" />
 
-        <TextView
-                android:id="@+id/txtAguaPorAnimal"
-                style="@style/CustomText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:gravity="center"
-                app:layout_constraintTop_toBottomOf="@id/toolbar"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                android:text="Água disponível por animal" />
-        <TextView
-                android:id="@+id/txtDisplayAguaPorAnimal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:gravity="center"
-                app:layout_constraintTop_toBottomOf="@id/txtAguaPorAnimal"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                android:text="" />
-
-
-
-        <TextView
-                android:id="@+id/txtMetroLinearAnimalBebedouro"
-                style="@style/CustomText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:gravity="center"
-                app:layout_constraintTop_toBottomOf="@id/txtDisplayAguaPorAnimal"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                android:text="Metro linear por animal no bebedouro" />
-        <TextView
-                android:id="@+id/txtDisplayMetroLinearAnimalBebedouro"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:gravity="center"
-                app:layout_constraintTop_toBottomOf="@id/txtMetroLinearAnimalBebedouro"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                android:text="" />
+                <TextView
+                        android:id="@+id/txtAguaPorAnimal"
+                        style="@style/CustomText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:gravity="center"
+                        app:layout_constraintTop_toBottomOf="@id/toolbar"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        android:text="Água disponível por animal" />
+                <TextView
+                        android:id="@+id/txtDisplayAguaPorAnimal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:gravity="center"
+                        app:layout_constraintTop_toBottomOf="@id/txtAguaPorAnimal"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        android:text="" />
 
 
-        <TextView
-                android:id="@+id/txtLimpeza"
-                style="@style/CustomText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:gravity="center"
-                app:layout_constraintTop_toBottomOf="@id/txtDisplayMetroLinearAnimalBebedouro"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                android:text="Nivel de limpeza (Porcentagem)" />
-        <TextView
-                android:id="@+id/txtDisplayLimpeza"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:gravity="center"
-                app:layout_constraintTop_toBottomOf="@id/txtLimpeza"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                android:text="" />
 
-        <TextView
-                android:id="@+id/txtCondicaoAcesso"
-                style="@style/CustomText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:gravity="center"
-                app:layout_constraintTop_toBottomOf="@id/txtDisplayLimpeza"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                android:text="Condiacao de acesso (Porcentagem)" />
-        <TextView
-                android:id="@+id/txtDisplayCondicaoAcesso"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:gravity="center"
-                app:layout_constraintTop_toBottomOf="@id/txtCondicaoAcesso"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                android:text="" />
+                <TextView
+                        android:id="@+id/txtMetroLinearAnimalBebedouro"
+                        style="@style/CustomText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:gravity="center"
+                        app:layout_constraintTop_toBottomOf="@id/txtDisplayAguaPorAnimal"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        android:text="Metro linear por animal no bebedouro" />
+                <TextView
+                        android:id="@+id/txtDisplayMetroLinearAnimalBebedouro"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:gravity="center"
+                        app:layout_constraintTop_toBottomOf="@id/txtMetroLinearAnimalBebedouro"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        android:text="" />
 
 
-        <TextView
-                android:id="@+id/txtIara"
-                style="@style/CustomText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:gravity="center"
-                app:layout_constraintTop_toBottomOf="@id/txtDisplayCondicaoAcesso"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                android:text="Condiacao de acesso (Porcentagem)" />
-        <TextView
-                android:id="@+id/txtDisplayIara"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:gravity="center"
-                app:layout_constraintTop_toBottomOf="@id/txtIara"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                android:text="" />
+                <TextView
+                        android:id="@+id/txtLimpeza"
+                        style="@style/CustomText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:gravity="center"
+                        app:layout_constraintTop_toBottomOf="@id/txtDisplayMetroLinearAnimalBebedouro"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        android:text="Nivel de limpeza (Porcentagem)" />
+                <TextView
+                        android:id="@+id/txtDisplayLimpeza"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:gravity="center"
+                        app:layout_constraintTop_toBottomOf="@id/txtLimpeza"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        android:text="" />
 
-</android.support.constraint.ConstraintLayout>
+                <TextView
+                        android:id="@+id/txtCondicaoAcesso"
+                        style="@style/CustomText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:gravity="center"
+                        app:layout_constraintTop_toBottomOf="@id/txtDisplayLimpeza"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        android:text="Condiacao de acesso (Porcentagem)" />
+                <TextView
+                        android:id="@+id/txtDisplayCondicaoAcesso"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:gravity="center"
+                        app:layout_constraintTop_toBottomOf="@id/txtCondicaoAcesso"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        android:text="" />
+
+
+                <TextView
+                        android:id="@+id/txtDistancia"
+                        style="@style/CustomText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:gravity="center"
+                        app:layout_constraintTop_toBottomOf="@id/txtDisplayCondicaoAcesso"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        android:text="Distância de acesso ao bebedouro (Porcentagem)" />
+
+                <TextView
+                        android:id="@+id/txtDisplayDistancia"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:gravity="center"
+                        app:layout_constraintTop_toBottomOf="@id/txtDistancia"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        android:text="" />
+                <TextView
+                        android:id="@+id/txtIara"
+                        style="@style/CustomText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:gravity="center"
+                        app:layout_constraintTop_toBottomOf="@id/txtDisplayDistancia"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        android:text="Índice de Requerimento de água animal (IARA) da invernada" />
+                <TextView
+                        android:id="@+id/txtDisplayIara"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:gravity="center"
+                        app:layout_constraintTop_toBottomOf="@id/txtIara"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        android:text="" />
+
+        </android.support.constraint.ConstraintLayout>
+</ScrollView>
