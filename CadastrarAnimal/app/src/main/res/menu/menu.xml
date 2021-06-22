@@ -3,6 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/relatorio"
-        android:title="Ralatorio por fazenda"
+        android:title="Relatorio por fazenda"
         app:showAsAction="never" />
 </menu>

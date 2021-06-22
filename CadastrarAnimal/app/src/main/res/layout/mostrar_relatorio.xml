@@ -101,7 +101,7 @@
                         app:layout_constraintTop_toBottomOf="@id/txtDisplayLimpeza"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintRight_toRightOf="parent"
-                        android:text="Condiacao de acesso (Porcentagem)" />
+                        android:text="Condição de acesso (Porcentagem)" />
                 <TextView
                         android:id="@+id/txtDisplayCondicaoAcesso"
                         android:layout_width="match_parent"
