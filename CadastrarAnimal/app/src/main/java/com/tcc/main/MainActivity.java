@@ -89,6 +89,9 @@ public class MainActivity extends AppCompatActivity {
             case R.id.relatorio:
                 relatorio();
                 return true;
+            case R.id.home:
+                home();
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -96,6 +99,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void relatorio() {
         Intent intent = new Intent(this, ListarRelatorioPorFazendaActivity.class);
+        startActivity(intent);
+    }
+
+    public void home() {
+        Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 
