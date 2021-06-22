@@ -104,7 +104,7 @@ public class MostrarRelatorioActivity extends AppCompatActivity {
             }
 
             //calculo
-            requerimentoTotal = requerimentoTotal + (40 * uaTotal) / 1000;
+            requerimentoTotal = requerimentoTotal + (40 * uaTotal);
 
         }
 
@@ -215,14 +215,22 @@ public class MostrarRelatorioActivity extends AppCompatActivity {
             dispay.setText("Ideal");
 
             idealIara = idealIara + 1;
+
+            dispay.setText(dispay.getText() + "\n Requerimento total: " + requerimentoTotal);
+            dispay.setText(dispay.getText() + "\n Volume total: " + volumeTotal);
         } else if (disponibilidade >= 30 && disponibilidade <= 50) {
             dispay.setText("Moderado");
+
             moderadoIara = moderadoIara + 1;
+            dispay.setText(dispay.getText() + "\n Requerimento total: " + requerimentoTotal);
+            dispay.setText(dispay.getText() + "\n Volume total: " + volumeTotal);
         }
         else if (disponibilidade < 30) {
             dispay.setText("Ruim");
 
             ruimIara = ruimIara + 1;
+            dispay.setText(dispay.getText() + "\n Requerimento total: " + requerimentoTotal);
+            dispay.setText(dispay.getText() + "\n Volume total: " + volumeTotal);
         }
 
         //Soma do contorno de todos os bebedouros e dividir pelo número de animais do rebanho
