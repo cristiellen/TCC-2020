@@ -208,7 +208,7 @@ public class MostrarRelatorioActivity extends AppCompatActivity {
         }
 
 
-        //Dividir o volume total (disponibilidade de água) pelo número de animais e verificar se atende ou não o requerimento diário do rebanho
+        //Dividir o Volume total dos bebedouros (disponibilidade de água) pelo número de animais e verificar se atende ou não o requerimento diário do rebanho
         TextView dispay= (TextView) findViewById(R.id.txtDisplayAguaPorAnimal);
         float disponibilidade = volumeTotal / numeroAnimaisTotal;
         if (disponibilidade > 50){
@@ -216,21 +216,21 @@ public class MostrarRelatorioActivity extends AppCompatActivity {
 
             idealIara = idealIara + 1;
 
-            dispay.setText(dispay.getText() + "\n Requerimento total: " + requerimentoTotal);
-            dispay.setText(dispay.getText() + "\n Volume total: " + volumeTotal);
+            dispay.setText(dispay.getText() + "\n Requerimento total de água: " + requerimentoTotal);
+            dispay.setText(dispay.getText() + "\n Volume total dos bebedouros: " + volumeTotal);
         } else if (disponibilidade >= 30 && disponibilidade <= 50) {
             dispay.setText("Moderado");
 
             moderadoIara = moderadoIara + 1;
-            dispay.setText(dispay.getText() + "\n Requerimento total: " + requerimentoTotal);
-            dispay.setText(dispay.getText() + "\n Volume total: " + volumeTotal);
+            dispay.setText(dispay.getText() + "\n Requerimento total de água: " + requerimentoTotal);
+            dispay.setText(dispay.getText() + "\n Volume total dos bebedouros: " + volumeTotal);
         }
         else if (disponibilidade < 30) {
             dispay.setText("Ruim");
 
             ruimIara = ruimIara + 1;
-            dispay.setText(dispay.getText() + "\n Requerimento total: " + requerimentoTotal);
-            dispay.setText(dispay.getText() + "\n Volume total: " + volumeTotal);
+            dispay.setText(dispay.getText() + "\n Requerimento total de água: " + requerimentoTotal);
+            dispay.setText(dispay.getText() + "\n Volume total dos bebedouros: " + volumeTotal);
         }
 
         //Soma do contorno de todos os bebedouros e dividir pelo número de animais do rebanho
