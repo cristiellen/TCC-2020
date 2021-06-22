@@ -301,7 +301,7 @@ public class MostrarRelatorioActivity extends AppCompatActivity {
         }
 
         dispay= (TextView) findViewById(R.id.txtDisplayIara);
-        if (idealIara == 4) {
+        if (idealIara >= 4) {
             dispay.setText(dispay.getText() +" Escore 3 - Adequado");
         } else if (moderadoIara >= 1) {
             dispay.setText(dispay.getText() +" // Escore 2 - Moderado");
