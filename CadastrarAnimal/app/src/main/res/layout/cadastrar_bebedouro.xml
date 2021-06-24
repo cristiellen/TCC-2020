@@ -137,7 +137,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/edtLargura"
             app:layout_constraintLeft_toLeftOf="parent"
-            android:text="CONDIÇÃO DE ACESSO" />
+            android:text="Condiçao de Acesso: \n IDEAL – Piso seco e sem dificuldades \n MODERADO - Piso mole e/ou acesso irregular \n RUIM – Brejo e/ou difícil acesso" />
 
         <Spinner
             android:id="@+id/spinner1"
@@ -154,7 +154,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/spinner1"
             app:layout_constraintLeft_toLeftOf="parent"
-            android:text="CONDIÇÃO DE LIMPEZA DO BEBEDOURO" />
+            android:text="Condiçao de Limpeza do Bebedouro: \n IDEAL - sem sinais de sujeira \n MODERADO – alguns sinais de sujeita, mas em níveis moderado \n RUIM – muita sujeira." />
 
         <Spinner
             android:id="@+id/spinnerLimpeza"
@@ -171,7 +171,7 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@id/spinnerLimpeza"
                 app:layout_constraintLeft_toLeftOf="parent"
-                android:text="Distância de acesso ao bebedouro: Ideal – Até 2 km, Moderado – de 2 a 4 km, Ruim – Acima de 4 km" />
+                android:text="Distância de acesso ao bebedouro: \n IDEAL – Até 2 km \n MODERADO – de 2 a 4 km \n RUIM – Acima de 4 km" />
 
         <Spinner
                 android:id="@+id/spinnerDistancia"
