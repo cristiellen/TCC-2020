@@ -121,6 +121,7 @@ public class MostrarRelatorioActivity extends AppCompatActivity {
 
         // TODO: 2 - Calcular o número de bebedouros (artifical / natural) de cada invernada
         float volumeTotal = 0;
+        float capacidadeArmazenamento = 0;
         float perimetroTotal = 0;
         Integer ideal = 0;
         Integer moderado = 0;
@@ -147,7 +148,7 @@ public class MostrarRelatorioActivity extends AppCompatActivity {
                 float h = bebedouro.altura;
                 volume = (float) (pi * Math.pow(raio, 2) * h); //
 
-                volumeTotal = volumeTotal + volume;
+                capacidadeArmazenamento = capacidadeArmazenamento + volume;
 
                 perimetroTotal = perimetroTotal + 2 * pi * raio;
 
@@ -184,7 +185,7 @@ public class MostrarRelatorioActivity extends AppCompatActivity {
                 float comprimento = Float.parseFloat(bebedouro.comprimento);
                 volume = comprimento * largura * altura;
 
-                volumeTotal = volumeTotal + volume;
+                capacidadeArmazenamento = capacidadeArmazenamento + volume;
 
                 perimetroTotal = perimetroTotal + (2 * comprimento) + (2 * largura);
 
@@ -221,7 +222,13 @@ public class MostrarRelatorioActivity extends AppCompatActivity {
 
         //Dividir o Volume total dos bebedouros (disponibilidade de água) pelo número de animais e verificar se atende ou não o requerimento diário do rebanho
         TextView dispay= (TextView) findViewById(R.id.txtDisplayAguaPorAnimal);
+        float litrosTotalDiario = 35 * numeroAnimaisTotal;
+        float litrosPorHora = litrosTotalDiario / 24;
+        volumeTotal = (litrosPorHora * 2 ) + capacidadeArmazenamento; // um dia, 24 horas
+
         float disponibilidade = volumeTotal / numeroAnimaisTotal;
+
+
         if (disponibilidade > 50){
             dispay.setText("Ideal");
 
@@ -264,60 +271,60 @@ public class MostrarRelatorioActivity extends AppCompatActivity {
 
         dispay= (TextView) findViewById(R.id.txtDisplayLimpeza);
         if (ideal != 0) {
-            dispay.setText(dispay.getText() +" Ideal: " + (ideal*100)/totalBebedouro + "%");
+            dispay.setText(dispay.getText() +"\nIdeal: " + (ideal*100)/totalBebedouro + "%");
             idealIara = idealIara + 1;
         }
         if (moderado != 0) {
-            dispay.setText(dispay.getText() +" // Moderado: " + (moderado*100)/totalBebedouro + "%");
+            dispay.setText(dispay.getText() +"\nModerado: " + (moderado*100)/totalBebedouro + "%");
 
             moderadoIara = moderadoIara + 1;
         }
         if (ruim != 0) {
-            dispay.setText(dispay.getText() +" // Ruim: " + (ruim*100)/totalBebedouro + "%");
+            dispay.setText(dispay.getText() +"\nRuim: " + (ruim*100)/totalBebedouro + "%");
             ruimIara = ruimIara + 1;
         }
 
 
         dispay= (TextView) findViewById(R.id.txtDisplayCondicaoAcesso);
         if (idealCond != 0) {
-            dispay.setText(dispay.getText() +" Ideal: " + (idealCond*100)/totalBebedouro + "%");
+            dispay.setText(dispay.getText() +"\nIdeal: " + (idealCond*100)/totalBebedouro + "%");
             idealIara = idealIara + 1;
         }
         if (moderadoCond != 0) {
-            dispay.setText(dispay.getText() +" // Moderado: " + (moderadoCond*100)/totalBebedouro + "%");
+            dispay.setText(dispay.getText() +"\nModerado: " + (moderadoCond*100)/totalBebedouro + "%");
 
             moderadoIara = moderadoIara + 1;
         }
         if (ruimCond != 0) {
-            dispay.setText(dispay.getText() +" // Ruim: " + (ruimCond*100)/totalBebedouro + "%");
+            dispay.setText(dispay.getText() +"\nRuim: " + (ruimCond*100)/totalBebedouro + "%");
 
             ruimIara = ruimIara + 1;
         }
 
         dispay= (TextView) findViewById(R.id.txtDisplayDistancia);
         if (idealDist != 0) {
-            dispay.setText(dispay.getText() +" Ideal: " + (idealDist*100)/totalBebedouro + "%");
+            dispay.setText(dispay.getText() +"\nIdeal: " + (idealDist*100)/totalBebedouro + "%");
 
             idealIara = idealIara + 1;
         }
         if (moderadoDist != 0) {
-            dispay.setText(dispay.getText() +" // Moderado: " + (moderadoDist*100)/totalBebedouro + "%");
+            dispay.setText(dispay.getText() +"\nModerado: " + (moderadoDist*100)/totalBebedouro + "%");
 
             moderadoIara = moderadoIara + 1;
         }
         if (ruimDist != 0) {
-            dispay.setText(dispay.getText() +" // Ruim: " + (ruimDist*100)/totalBebedouro + "%");
+            dispay.setText(dispay.getText() +"\nRuim: " + (ruimDist*100)/totalBebedouro + "%");
 
             ruimIara = ruimIara + 1;
         }
 
         dispay= (TextView) findViewById(R.id.txtDisplayIara);
         if (idealIara >= 4) {
-            dispay.setText(dispay.getText() +" Escore 3 - Adequado");
+            dispay.setText(dispay.getText() +"\nEscore 3 - Adequado");
         } else if (moderadoIara >= 1) {
-            dispay.setText(dispay.getText() +" // Escore 2 - Moderado");
+            dispay.setText(dispay.getText() +"\nEscore 2 - Moderado");
         } else if (ruimIara >= 1) {
-            dispay.setText(dispay.getText() +" // Escore 3 - Ruim ");
+            dispay.setText(dispay.getText() +"\nEscore 3 - Ruim ");
         }
 
         // my_child_toolbar is defined in the layout file
@@ -331,12 +338,11 @@ public class MostrarRelatorioActivity extends AppCompatActivity {
         ab.setDisplayHomeAsUpEnabled(true);
     }
 
-
     private void alerta(String mensagem){
         //funcao pra exibir mensagem básica ao usuario
         Toast.makeText(this, mensagem, Toast.LENGTH_SHORT).show();
     }
 
-
-
+    //TODO: Em caso de ruim, quantos litros faltam pros animais, diferença de numero pra 30 vezes total de animal (para chegar no moderado, ou para chegar no ideal (fazendeiro que escolhe)) (por em uma nova tela chamada projeção, acesso pelo botao no canto da tela do relatorio) (nivel fazenda)
+    //TODO: Projeção de necessidade do rebanho (nivel fazenda)
 }

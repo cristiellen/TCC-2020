@@ -87,7 +87,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/edtComprimento"
             app:layout_constraintLeft_toLeftOf="parent"
-            android:text="ALTURA" />
+            android:text="Profundidade" />
 
         <EditText
             android:id="@+id/edtAltura"
