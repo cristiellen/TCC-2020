@@ -6,12 +6,17 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.*;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import android.widget.Toast;
+import com.tcc.animal.dao.Animal;
+import com.tcc.bebedouro.dao.Bebedouro;
+import com.tcc.bebedouro.dao.BebedouroCircular;
+import com.tcc.bebedouro.dao.BebedouroRetangular;
 import com.tcc.fazenda.activity.AtualizarFazendaActivity;
 import com.tcc.fazenda.activity.CadastrarFazendaActivity;
 import com.tcc.fazenda.activity.MostrarFazendaActivity;
@@ -20,6 +25,7 @@ import com.tcc.fazenda.dao.Fazenda;
 import java.util.List;
 
 import com.tcc.invernada.activity.ListarInvernadaActivity;
+import com.tcc.invernada.dao.Invernada;
 import com.tcc.relatorio.activity.ListarRelatorioPorFazendaActivity;
 import io.objectbox.Box;
 
@@ -125,9 +131,31 @@ public class MainActivity extends AppCompatActivity {
         menuItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
+                for (Invernada invernada : fazenda.invernada) {
+                    Log.e("invernada", ">>>> into the for \n\n\n");
+                    Invernada inv = ObjectBox.get().boxFor(Invernada.class).get(invernada.id);
+
+                    for (Animal animal : inv.animais) {
+                        Log.e("animal", ">>>> into the for \n\n\n");
+                        ObjectBox.get().boxFor(Animal.class).remove(animal);
+                    }
+
+                    for (BebedouroRetangular bebedouro : inv.bebedourosRet){
+                        Log.e("bebRet", ">>>> into the for \n\n\n");
+                        ObjectBox.get().boxFor(BebedouroRetangular.class).remove(bebedouro);
+                    }
+
+                    for (BebedouroCircular bebedouro : inv.bebedourosCir) {
+                        Log.e("bebCirc", ">>>> into the for \n\n\n");
+                        ObjectBox.get().boxFor(BebedouroCircular.class).remove(bebedouro);
+                    }
+
+                    invernada.fazenda.setTarget(null);
+                    ObjectBox.get().boxFor(Invernada.class).remove(invernada);
+                }
                 ObjectBox.get().boxFor(Fazenda.class).remove(fazenda);
                 Intent intent = new Intent(v.getContext(), MainActivity.class);
-                alerta("Fazenda '"+fazenda.getNome()+"' removida");
+                //alerta("Fazenda '"+fazenda.getNome()+"' removida");
                 startActivity(intent);
                 return false;
             }

@@ -11,6 +11,9 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
+import com.tcc.animal.dao.Animal;
+import com.tcc.bebedouro.dao.BebedouroCircular;
+import com.tcc.bebedouro.dao.BebedouroRetangular;
 import com.tcc.fazenda.dao.Fazenda;
 import com.tcc.invernada.dao.Invernada;
 import com.tcc.main.MainActivity;
@@ -100,6 +103,18 @@ public class ListarInvernadaActivity extends AppCompatActivity {
         menuItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
+                for (Animal animal : invernada.animais) {
+                    ObjectBox.get().boxFor(Animal.class).remove(animal);
+                }
+
+                for (BebedouroRetangular bebedouro : invernada.bebedourosRet){
+                    ObjectBox.get().boxFor(BebedouroRetangular.class).remove(bebedouro);
+                }
+
+                for (BebedouroCircular bebedouro : invernada.bebedourosCir) {
+                    ObjectBox.get().boxFor(BebedouroCircular.class).remove(bebedouro);
+                }
+
                 invernada.fazenda.setTarget(null);
                 ObjectBox.get().boxFor(Invernada.class).remove(invernada);
                 Intent intent = new Intent(v.getContext(), ListarInvernadaActivity.class);
