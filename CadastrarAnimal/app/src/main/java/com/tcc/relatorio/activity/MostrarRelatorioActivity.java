@@ -5,7 +5,9 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.widget.TextView;
+import android.widget.Toast;
 import com.tcc.animal.dao.Animal;
 import com.tcc.bebedouro.dao.Bebedouro;
 import com.tcc.bebedouro.dao.BebedouroCircular;
@@ -35,34 +37,42 @@ public class MostrarRelatorioActivity extends AppCompatActivity {
         HashMap<Integer, ArrayList<Float>> tabela = new HashMap<Integer, ArrayList<Float>>();
         ArrayList<Float> uas = new ArrayList<Float>();
 
+        uas = new ArrayList<Float>();
         uas.add(0, (float) 0.8);
         uas.add(1, (float) 1);
         tabela.put(0, uas);
 
+        uas = new ArrayList<Float>();
         uas.add(0, (float) 1.2);
         uas.add(1, (float) 1);
         tabela.put(1, uas);
 
+        uas = new ArrayList<Float>();
         uas.add(0, (float) 0.6);
         uas.add(1, (float) 0.75);
         tabela.put(2, uas);
 
+        uas = new ArrayList<Float>();
         uas.add(0, (float) 0.4);
         uas.add(1, (float) 0.5);
         tabela.put(3, uas);
 
+        uas = new ArrayList<Float>();
         uas.add(0, (float) 0.2);
         uas.add(1, (float) 0.25);
         tabela.put(4, uas);
 
+        uas = new ArrayList<Float>();
         uas.add(0, (float) 0.6);
         uas.add(1, (float) 0.75);
         tabela.put(5, uas);
 
+        uas = new ArrayList<Float>();
         uas.add(0, (float) 0.4);
         uas.add(1, (float) 0.5);
         tabela.put(6, uas);
 
+        uas = new ArrayList<Float>();
         uas.add(0, (float) 0.3);
         uas.add(1, (float) 0.25);
         tabela.put(7, uas);
@@ -89,6 +99,7 @@ public class MostrarRelatorioActivity extends AppCompatActivity {
                 for ( String item: tiposRebanho ) {
                     if (animal.tipo.equals(item)) {
                         ua = tabela.get(index);
+                        Log.e("ua", String.valueOf(ua));
                     }
                     index+=1;
                 }
@@ -319,6 +330,13 @@ public class MostrarRelatorioActivity extends AppCompatActivity {
         // Enable the Up button
         ab.setDisplayHomeAsUpEnabled(true);
     }
+
+
+    private void alerta(String mensagem){
+        //funcao pra exibir mensagem básica ao usuario
+        Toast.makeText(this, mensagem, Toast.LENGTH_SHORT).show();
+    }
+
 
 
 }
