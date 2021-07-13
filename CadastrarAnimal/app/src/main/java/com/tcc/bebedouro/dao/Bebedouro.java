@@ -18,16 +18,18 @@ public abstract class Bebedouro {
     public String condicaoAcesso;
     public String limpeza;
     public String distanciaAcesso;
+    public  String vazao;
 
     @Transient
     private static long id_temp;
 
 
-    public Bebedouro(float altura, String condicaoAcesso, String limpeza, String distanciaAcesso) {
+    public Bebedouro(float altura, String condicaoAcesso, String limpeza, String distanciaAcesso, String vazao) {
         this.altura = altura;
         this.condicaoAcesso = condicaoAcesso;
         this.limpeza = limpeza;
         this.distanciaAcesso = distanciaAcesso;
+        this.vazao = vazao;
     }
 
     public Bebedouro( ) {
@@ -80,6 +82,14 @@ public abstract class Bebedouro {
 
     public void setDistanciaAcesso(String distanciaAcesso) {
         this.distanciaAcesso = distanciaAcesso;
+    }
+
+    public String getVazao() {
+        return vazao;
+    }
+
+    public void setVazao(String vazao) {
+        this.vazao = vazao;
     }
 
     @Override

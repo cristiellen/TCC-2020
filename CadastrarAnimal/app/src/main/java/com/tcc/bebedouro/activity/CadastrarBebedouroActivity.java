@@ -117,8 +117,10 @@ public class CadastrarBebedouroActivity extends AppCompatActivity implements Ada
                   Spinner condicaoAcesso = (Spinner) findViewById(R.id.spinner1);
                   Spinner limpeza = (Spinner) findViewById(R.id.spinnerLimpeza);
                   Spinner distancia = (Spinner) findViewById(R.id.spinnerDistancia);
+                  EditText vazao = (EditText) findViewById(R.id.edtVazao);
 
-                  BebedouroRetangular bebedouroRetangular = new BebedouroRetangular(Float.parseFloat(altura.getText().toString()), condicaoAcesso.getSelectedItem().toString(), limpeza.getSelectedItem().toString(), comprimento.getText().toString(),largura.getText().toString(), distancia.getSelectedItem().toString());
+
+                  BebedouroRetangular bebedouroRetangular = new BebedouroRetangular(Float.parseFloat(altura.getText().toString()), condicaoAcesso.getSelectedItem().toString(), limpeza.getSelectedItem().toString(), comprimento.getText().toString(),largura.getText().toString(), distancia.getSelectedItem().toString(), vazao.getText().toString());
 
                   Invernada invernada = invernadaBox.get(Invernada.getId_temp());
                   bebedouroRetangular.invernada.setTarget(invernada);
@@ -178,8 +180,8 @@ public class CadastrarBebedouroActivity extends AppCompatActivity implements Ada
             findViewById(R.id.edtRaio).setVisibility(View.GONE);
 
 
-            findViewById(R.id.txtVazao).setVisibility(View.GONE);
-            findViewById(R.id.edtVazao).setVisibility(View.GONE);
+            findViewById(R.id.txtVazao).setVisibility(View.VISIBLE);
+            findViewById(R.id.edtVazao).setVisibility(View.VISIBLE);
 
         }
     }

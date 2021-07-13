@@ -13,8 +13,8 @@ public class BebedouroRetangular extends Bebedouro {
     public ToOne<Invernada> invernada;
 
 
-    public BebedouroRetangular(float altura, String condicaoAcesso, String limpeza, String comprimento, String largura, String distanciaAcesso) {
-        super(altura, condicaoAcesso, limpeza, distanciaAcesso);
+    public BebedouroRetangular(float altura, String condicaoAcesso, String limpeza, String comprimento, String largura, String distanciaAcesso, String vazao) {
+        super(altura, condicaoAcesso, limpeza, distanciaAcesso, vazao);
         this.comprimento = comprimento;
         this.largura = largura;
     }
@@ -48,6 +48,6 @@ public class BebedouroRetangular extends Bebedouro {
 
     @Override
     public String toString(){
-        return "comprimento: " + this.comprimento+", largura: "+ this.largura + ", altura: " + this.altura + ", Condição acesso: " + this.condicaoAcesso + ", limpeza: " + this.limpeza + ", distancia: " + this.distanciaAcesso;
+        return "comprimento: " + this.comprimento+", largura: " + this.largura + ", vazão por min: "+ this.vazao + ", altura: " + this.altura + ", Condição acesso: " + this.condicaoAcesso + ", limpeza: " + this.limpeza + ", distancia: " + this.distanciaAcesso;
     }
 }

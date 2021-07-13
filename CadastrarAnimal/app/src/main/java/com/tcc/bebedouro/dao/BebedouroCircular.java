@@ -9,14 +9,12 @@ import io.objectbox.relation.ToOne;
 public class BebedouroCircular extends Bebedouro {
 
     public String raio;
-    public String vazao;
     public ToOne<Invernada> invernada;
 
 
     public BebedouroCircular(float altura, String condicaoAcesso, String limpeza, String raio, String vazao, String distanciaAcesso) {
-        super(altura, condicaoAcesso, limpeza, distanciaAcesso);
+        super(altura, condicaoAcesso, limpeza, distanciaAcesso, vazao);
         this.raio = raio;
-        this.vazao = vazao;
     }
 
     public BebedouroCircular( ) {
@@ -48,6 +46,6 @@ public class BebedouroCircular extends Bebedouro {
 
     @Override
     public String toString(){
-        return "raio: " + this.raio+", vazão: "+ this.vazao + ", altura: " + this.altura + ", Condição acesso: " + this.condicaoAcesso + ", limpeza: " + this.limpeza  + ", distancia: " + this.distanciaAcesso;
+        return "raio: " + this.raio+", vazão por min: "+ this.vazao + ", altura: " + this.altura + ", Condição acesso: " + this.condicaoAcesso + ", limpeza: " + this.limpeza  + ", distancia: " + this.distanciaAcesso;
     }
 }

@@ -121,6 +121,7 @@ public class AtualizarBebedouroActivity extends AppCompatActivity implements Ada
 
                   EditText comprimento = (EditText) findViewById(R.id.edtComprimento);
                   EditText largura = (EditText) findViewById(R.id.edtLargura);
+                  EditText vazao = (EditText) findViewById(R.id.edtVazao);
 
                   EditText altura = (EditText) findViewById(R.id.edtAltura);
                   Spinner condicaoAcesso = (Spinner) findViewById(R.id.spinner1);
@@ -133,6 +134,7 @@ public class AtualizarBebedouroActivity extends AppCompatActivity implements Ada
                   bebRet.setComprimento(comprimento.getText().toString());
                   bebRet.setLargura(largura.getText().toString());
                   bebRet.setDistanciaAcesso(distancia.getSelectedItem().toString());
+                  bebRet.setVazao(vazao.getText().toString());
 
                   retangularBox.put(bebRet);
                   startActivity(intent);
@@ -226,6 +228,9 @@ public class AtualizarBebedouroActivity extends AppCompatActivity implements Ada
             EditText largura = (EditText) findViewById(R.id.edtLargura);
             largura.setText(bebRet.getLargura());
 
+            EditText vazao = (EditText) findViewById(R.id.edtVazao);
+            vazao.setText(bebRet.getVazao());
+
             EditText altura = (EditText) findViewById(R.id.edtAltura);
             altura.setText(String.valueOf(bebRet.getAltura()));
 
@@ -298,8 +303,8 @@ public class AtualizarBebedouroActivity extends AppCompatActivity implements Ada
             findViewById(R.id.edtRaio).setVisibility(View.GONE);
 
 
-            findViewById(R.id.txtVazao).setVisibility(View.GONE);
-            findViewById(R.id.edtVazao).setVisibility(View.GONE);
+            findViewById(R.id.txtVazao).setVisibility(View.VISIBLE);
+            findViewById(R.id.edtVazao).setVisibility(View.VISIBLE);
 
         }
     }

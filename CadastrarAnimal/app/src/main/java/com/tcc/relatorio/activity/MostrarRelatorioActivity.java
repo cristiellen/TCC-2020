@@ -81,6 +81,7 @@ public class MostrarRelatorioActivity extends AppCompatActivity {
 
         long fazendaId = Fazenda.getId_temp();
         Fazenda fazenda = boxStore.boxFor(Fazenda.class).get(fazendaId);
+        float periodoSeco = 0;
 
         // TODO: 1 - Calcular o requerimento de água do rebanho de cada invernada
         ArrayList<Float> listaRequerimento = new ArrayList<Float>();
@@ -115,8 +116,8 @@ public class MostrarRelatorioActivity extends AppCompatActivity {
             }
 
             //calculo
-            requerimentoTotal = requerimentoTotal + (40 * uaTotal);
-
+            requerimentoTotal = requerimentoTotal + ((40 * uaTotal)/1000);
+            //periodoSeco += requerimentoTotal * 120;
         }
 
         // TODO: 2 - Calcular o número de bebedouros (artifical / natural) de cada invernada
@@ -140,6 +141,8 @@ public class MostrarRelatorioActivity extends AppCompatActivity {
         Integer ruimIara = 0;
 
         Integer totalBebedouro = 0;
+        float vazaoPorMinTotal = 0;
+
         for (Invernada invernada : fazenda.invernada) {
             for (BebedouroCircular bebedouro : invernada.bebedourosCir){
                 float volume = 0.0F;
@@ -151,6 +154,8 @@ public class MostrarRelatorioActivity extends AppCompatActivity {
                 capacidadeArmazenamento = capacidadeArmazenamento + volume;
 
                 perimetroTotal = perimetroTotal + 2 * pi * raio;
+
+                vazaoPorMinTotal = vazaoPorMinTotal + Float.parseFloat(bebedouro.vazao);
 
                 if (bebedouro.limpeza.equals("Ideal")) {
                     ideal = ideal + 1;
@@ -189,6 +194,9 @@ public class MostrarRelatorioActivity extends AppCompatActivity {
 
                 perimetroTotal = perimetroTotal + (2 * comprimento) + (2 * largura);
 
+                vazaoPorMinTotal = vazaoPorMinTotal + Float.parseFloat(bebedouro.vazao);
+
+
                 if (bebedouro.limpeza.equals("Ideal")) {
                     ideal = ideal + 1;
                 } else if (bebedouro.limpeza.equals("Moderado")) {
@@ -221,33 +229,42 @@ public class MostrarRelatorioActivity extends AppCompatActivity {
 
 
         //Dividir o Volume total dos bebedouros (disponibilidade de água) pelo número de animais e verificar se atende ou não o requerimento diário do rebanho
+//        float litrosTotalDiario = 35 * numeroAnimaisTotal;
+//        float litrosPorHora = litrosTotalDiario / 24;
+//
+//        float x = capacidadeArmazenamento / periodoSeco;
+//        float disponibilidade = (x * 40) + (litrosPorHora + (vazaoPorMinTotal * 60));
+
+        float disponibilidade = (capacidadeArmazenamento / requerimentoTotal) * 40;
+
+        alerta(String.valueOf(disponibilidade));
+        volumeTotal = capacidadeArmazenamento;
+        //(litrosPorHora + (vazaoPorMinTotal * 60));
+
         TextView dispay= (TextView) findViewById(R.id.txtDisplayAguaPorAnimal);
-        float litrosTotalDiario = 35 * numeroAnimaisTotal;
-        float litrosPorHora = litrosTotalDiario / 24;
-        volumeTotal = (litrosPorHora * 2 ) + capacidadeArmazenamento; // um dia, 24 horas
 
-        float disponibilidade = volumeTotal / numeroAnimaisTotal;
 
+//        volumeTotal = (litrosPorHora * 2 ) + capacidadeArmazenamento; // um dia, 24 horas
+//        float disponibilidade = volumeTotal / numeroAnimaisTotal;
 
         if (disponibilidade > 50){
             dispay.setText("Ideal");
 
             idealIara = idealIara + 1;
-
-            dispay.setText(dispay.getText() + "\n Requerimento total de água: " + requerimentoTotal);
+            dispay.setText(dispay.getText() + "\n Requerimento diário de água: " + requerimentoTotal);
             dispay.setText(dispay.getText() + "\n Volume total dos bebedouros: " + volumeTotal);
         } else if (disponibilidade >= 30 && disponibilidade <= 50) {
             dispay.setText("Moderado");
 
             moderadoIara = moderadoIara + 1;
-            dispay.setText(dispay.getText() + "\n Requerimento total de água: " + requerimentoTotal);
+            dispay.setText(dispay.getText() + "\n Requerimento diário de água: " + requerimentoTotal);
             dispay.setText(dispay.getText() + "\n Volume total dos bebedouros: " + volumeTotal);
         }
         else if (disponibilidade < 30) {
             dispay.setText("Ruim");
 
             ruimIara = ruimIara + 1;
-            dispay.setText(dispay.getText() + "\n Requerimento total de água: " + requerimentoTotal);
+            dispay.setText(dispay.getText() + "\n Requerimento diário de água: " + requerimentoTotal);
             dispay.setText(dispay.getText() + "\n Volume total dos bebedouros: " + volumeTotal);
         }
 

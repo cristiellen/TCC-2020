@@ -104,7 +104,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/edtAltura"
             app:layout_constraintLeft_toLeftOf="parent"
-            android:text="VAZÃO" />
+            android:text="Vazão por minuto" />
 
         <EditText
             android:id="@+id/edtVazao"
